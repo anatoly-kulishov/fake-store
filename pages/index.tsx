@@ -1,18 +1,14 @@
 import * as React from 'react';
 import { NextPage } from 'next';
 
-import Layout from '../components/Layout/Layout';
-import Header from '../components/Header/Header';
+import MetaLayout from '../components/MetaLayout/MetaLayout';
 import MainHero from '../components/MainHero/MainHero';
-import Footer from '../components/Footer/Footer';
 
 const IndexPage: NextPage = () => {
   return (
-    <Layout title="Fake Store">
-      <Header />
+    <MetaLayout title="Home page">
       <MainHero />
-      <Footer />
-    </Layout>
+    </MetaLayout>
   );
 };
 
