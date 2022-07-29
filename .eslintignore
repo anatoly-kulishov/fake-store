@@ -1,4 +1,4 @@
-build
+/build
 static
 node_modules
 .eslintrc.js
@@ -10,3 +10,5 @@ src/assets/libs
 /src/service-worker.ts
 /src/components/Profile/ProfileInfo/ProfileStatus/ProfileStatus.test.tsx
 /config-overrides.js
+postcss.config.js
+tailwind.config.js
