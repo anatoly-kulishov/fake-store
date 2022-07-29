@@ -3,7 +3,7 @@ import { FC, useState } from 'react';
 import Link from 'next/link';
 
 import { IProduct } from '../../shared/models/product';
-import Heading from '../UI/Heading/Heading';
+import Heading from '../ui/Heading/Heading';
 
 interface IProductProps {
   data: IProduct;

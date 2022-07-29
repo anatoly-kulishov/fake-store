@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { DEFAULT_ICONS_SIZE } from '../../configs/constants';
-import { IconComponent } from '../../shared/interfaces';
+import { IconComponent } from '../../shared/models';
 
 const HamburgerIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE }) => {
   return (

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 
-import MobileMenuButton from '../UI/MobileMenuButton/MobileMenuButton';
+import MobileMenuButton from '../ui/MobileMenuButton/MobileMenuButton';
 import { SITE_TITLE } from '../../configs/constants';
 
 const navigation = [

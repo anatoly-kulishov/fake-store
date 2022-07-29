@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import MetaLayout from '../../components/MetaLayout/MetaLayout';
-import Heading from '../../components/UI/Heading/Heading';
+import Heading from '../../components/ui/Heading/Heading';
 import { IProduct } from '../../shared/models/product';
 import { API_BASE_PATH } from '../../configs/constants';
 
@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: { params: IProduct }) => {
   const { id } = context.params;
-  const response = await fetch(`${API_BASE_PATH}/products${id}`);
+  const response = await fetch(`${API_BASE_PATH}/products/${id}`);
   const data = await response.json();
 
   if (!data) {
