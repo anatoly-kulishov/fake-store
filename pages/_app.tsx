@@ -1,9 +1,8 @@
 import React from 'react';
 import { AppProps } from 'next/app';
 
-import Layout from '../components/Layout/Layout';
-
-import '../styles/index.scss';
+import Layout from '../app/components/layout';
+import '../app/assets/styles/index.scss';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 
-import Meta from '../../components/Meta/Meta';
-import Heading from '../../components/ui/Heading/Heading';
-import { IProduct } from '../../shared/models/product';
-import { API_BASE_PATH } from '../../configs/constants';
+import Meta from '../../app/components/shared/meta';
+import Heading from '../../app/components/ui/heading';
+import { IProduct } from '../../app/shared/models/product';
+import { API_URL } from '../../app/shared/constants';
 
 export const getStaticPaths = async () => {
-  const response = await fetch(`${API_BASE_PATH}/products`);
+  const response = await fetch(`${API_URL}/products`);
   const data = await response.json();
 
   const paths = data.map(({ id }: { id: number }) => ({
@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: { params: IProduct }) => {
   const { id } = context.params;
-  const response = await fetch(`${API_BASE_PATH}/products/${id}`);
+  const response = await fetch(`${API_URL}/products/${id}`);
   const data = await response.json();
 
   if (!data) {
