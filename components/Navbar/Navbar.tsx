@@ -2,12 +2,13 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 
 import MobileMenuButton from '../ui/MobileMenuButton/MobileMenuButton';
+import { AppRouteKeys, AppRoutesEnum } from '../../shared/models/routes';
 import { SITE_TITLE } from '../../configs/constants';
 
 const navigation = [
-  { id: 1, name: 'Home', href: '/' },
-  { id: 2, name: 'Products', href: '/products' },
-  { id: 3, name: 'Users', href: '/users' },
+  { id: 1, name: AppRouteKeys.HOME, href: AppRoutesEnum.HOME },
+  { id: 2, name: AppRouteKeys.PRODUCTS, href: AppRoutesEnum.PRODUCTS },
+  { id: 3, name: AppRouteKeys.USERS, href: AppRoutesEnum.USERS },
 ];
 
 const LOGO_URL: string = 'https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg';
@@ -36,6 +37,9 @@ const Navbar: FC = () => {
                 </Link>
               </li>
             ))}
+            <li>
+              <span className="cursor-pointer text-blue-600">Log out</span>
+            </li>
           </ul>
         </div>
       </div>

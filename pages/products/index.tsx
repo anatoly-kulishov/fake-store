@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FC } from 'react';
 
-import MetaLayout from '../../components/MetaLayout/MetaLayout';
+import Meta from '../../components/Meta/Meta';
 import { Product } from '../../components/Product/Product';
 import { IProduct } from '../../shared/models/product';
 import { API_BASE_PATH } from '../../configs/constants';
@@ -23,11 +23,11 @@ export const getStaticProps = async () => {
 
 const Products: FC<{ posts: IProduct[] }> = ({ posts }) => {
   return (
-    <MetaLayout title="Products page">
+    <Meta title="Products page">
       <div className="max-w-lg container mx-auto pt-5 mt-[50px]">
         {posts && posts.map((product: IProduct) => <Product data={product} key={product.id} />)}
       </div>
-    </MetaLayout>
+    </Meta>
   );
 };
 

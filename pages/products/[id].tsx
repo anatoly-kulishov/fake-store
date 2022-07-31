@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import MetaLayout from '../../components/MetaLayout/MetaLayout';
+import Meta from '../../components/Meta/Meta';
 import Heading from '../../components/ui/Heading/Heading';
 import { IProduct } from '../../shared/models/product';
 import { API_BASE_PATH } from '../../configs/constants';
@@ -31,7 +31,7 @@ export const getStaticProps = async (context: { params: IProduct }) => {
   }
 
   return {
-    props: { product: data },
+    props: { product: data, fallback: 'blocking' },
   };
 };
 
@@ -40,13 +40,13 @@ interface IProductProps {
 }
 
 const Product: FC<IProductProps> = ({ product }) => (
-  <MetaLayout title={product.title}>
+  <Meta title={product.title}>
     <div className="max-w-xl container mx-auto pt-5 mt-[50px] text-center">
       <img src={product.image} alt="" className="w-1/6 mb-2 m-auto" />
       <Heading tag="h2" text={product.title} />
       <p>{product.description}</p>
     </div>
-  </MetaLayout>
+  </Meta>
 );
 
 export default Product;

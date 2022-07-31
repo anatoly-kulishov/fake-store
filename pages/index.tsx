@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { NextPage } from 'next';
 
-import MetaLayout from '../components/MetaLayout/MetaLayout';
+import Meta from '../components/Meta/Meta';
 import MainHero from '../components/MainHero/MainHero';
 
 const IndexPage: NextPage = () => {
   return (
-    <MetaLayout title="Home page">
+    <Meta title="Home page">
       <MainHero />
-    </MetaLayout>
+    </Meta>
   );
 };
 
