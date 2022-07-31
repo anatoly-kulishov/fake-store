@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 
-import Meta from '../../components/Meta/Meta';
-import { API_BASE_PATH } from '../../configs/constants';
-import { IUser } from '../../shared/models/user';
-import Heading from '../../components/ui/Heading/Heading';
+import Meta from '../../app/components/shared/meta';
+import Heading from '../../app/components/ui/heading';
+import { IUser } from '../../app/shared/models/user';
+import { API_URL } from '../../app/shared/constants';
 
 export const getStaticPaths = async () => {
-  const response = await fetch(`${API_BASE_PATH}/users`);
+  const response = await fetch(`${API_URL}/users`);
   const data = await response.json();
 
   const paths = data.map(({ id }: { id: number }) => ({
@@ -21,7 +21,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: { params: IUser }) => {
   const { id } = context.params;
-  const response = await fetch(`${API_BASE_PATH}/users/${id}`);
+  const response = await fetch(`${API_URL}/users/${id}`);
   const data = await response.json();
 
   if (!data) {
@@ -44,7 +44,7 @@ const User: FC<IUserProps> = ({ user }) => {
     <Meta title={user?.username}>
       <div className="max-w-xl container mx-auto pt-5 mt-[50px] text-center">
         <Heading tag="h2" text={user?.username} />
-        <p>{user.password}</p>
+        <p>{user?.password}</p>
       </div>
     </Meta>
   );

@@ -1,10 +1,10 @@
 import React, { FC, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-import Meta from '../components/Meta/Meta';
-import Heading from '../components/ui/Heading/Heading';
-import { smthWentWrong } from '../configs/constants';
-import styles from '../styles/404.module.scss';
+import Meta from '../app/components/shared/meta';
+import Heading from '../app/components/ui/heading';
+import { smthWentWrong } from '../app/shared/constants';
+import styles from '../app/assets/styles/404.module.scss';
 
 const Error: FC = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const Error: FC = () => {
 
   return (
     <Meta title="Error">
-      <div className={styles.wrapper}>
+      <div className={styles.Wrapper}>
         <div>
           <Heading text="404" />
           <Heading tag="h2" text={smthWentWrong} />
