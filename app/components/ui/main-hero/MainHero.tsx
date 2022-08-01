@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 
-import { SITE_TITLE } from '../../../shared/constants';
+import { SITE_TITLE } from '@/shared/constants';
 
 export const MainHero: FC = () => {
   return (

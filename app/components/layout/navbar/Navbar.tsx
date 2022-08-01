@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 
-import MobileMenuButton from '../../ui/mobile-menu-button';
-import { AppRouteKeys, AppRoutesEnum } from '../../../shared/models/routes';
-import { SITE_TITLE } from '../../../shared/constants';
+import MobileMenuButton from '@/ui/mobile-menu-button';
+import { AppRouteKeys, AppRoutesEnum } from '@/shared/models/routes';
+import { SITE_TITLE } from '@/shared/constants';
 
 const navigation = [
   { id: 1, name: AppRouteKeys.HOME, href: AppRoutesEnum.HOME },

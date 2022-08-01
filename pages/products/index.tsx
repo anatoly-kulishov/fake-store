@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 
 import Meta from '../../app/components/shared/meta';
 import Product from '../../app/components/screens/product';
-import { IProduct } from '../../app/shared/models/product';
-import { API_URL } from '../../app/shared/constants';
+
+import { IProduct } from '@/shared/models/product';
+import { API_URL } from '@/shared/constants';
 
 export const getStaticProps = async () => {
   const response = await fetch(`${API_URL}/products`);

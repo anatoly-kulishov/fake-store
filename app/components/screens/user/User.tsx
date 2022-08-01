@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 
-import { IUser } from '../../../shared/models/user';
-import { AppRoutesEnum } from '../../../shared/models/routes';
+import { IUser } from '@/shared/models/user';
+import { AppRoutesEnum } from '@/shared/models/routes';
 
 interface IProductProps {
   data: IUser;

@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 
 import Meta from '../../app/components/shared/meta';
 import Heading from '../../app/components/ui/heading';
-import { IUser } from '../../app/shared/models/user';
-import { API_URL } from '../../app/shared/constants';
+
+import { IUser } from '@/shared/models/user';
+import { API_URL } from '@/shared/constants';
 
 export const getStaticPaths = async () => {
   const response = await fetch(`${API_URL}/users`);

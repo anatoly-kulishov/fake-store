@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 
 import Meta from '../../app/components/shared/meta';
-import { IUser } from '../../app/shared/models/user';
-import { API_URL } from '../../app/shared/constants';
 import { User } from '../../app/components/screens/user/User';
+
+import { IUser } from '@/shared/models/user';
+import { API_URL } from '@/shared/constants';
 
 export const getStaticProps = async () => {
   const response = await fetch(`${API_URL}/users`);

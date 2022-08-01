@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HamburgeIcon from '../../shared/icons/HamburgeIcon';
+import HamburgeIcon from '@/components/shared/icons/HamburgeIcon';
 
 export const MobileMenuButton = () => {
   return (

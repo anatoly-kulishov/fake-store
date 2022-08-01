@@ -2,9 +2,10 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 import { removeTokensStorage, saveToStorage } from './auth.helper';
-import { API_URL } from '../../shared/constants';
-import { getAuthUrl } from '../../configs/api.config';
 import { getContentType } from '../../api/api.helpers';
+
+import { API_URL } from '@/shared/constants';
+import { getAuthUrl } from '@/configs/api.config';
 
 export const AuthService = {
   async register(email: string, password: string) {

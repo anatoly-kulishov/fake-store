@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
 import Link from 'next/link';
 
-import Heading from '../../ui/heading';
-import { IProduct } from '../../../shared/models/product';
-import { AppRoutesEnum } from '../../../shared/models/routes';
+import Heading from '@/ui/heading';
+import { IProduct } from '@/shared/models/product';
+import { AppRoutesEnum } from '@/shared/models/routes';
 
 interface IProductProps {
   data: IProduct;
