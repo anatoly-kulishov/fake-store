@@ -25,3 +25,8 @@ export interface IAPIResponseType<D = {}, RC = ResultCodesEnum> {
 export interface IconComponent {
   size?: number | string;
 }
+
+export interface IBreadcrumbPath {
+  title: string;
+  href: string;
+}
