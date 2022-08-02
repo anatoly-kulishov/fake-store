@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 
 import Meta from '../app/components/shared/meta';
 import Heading from '../app/components/ui/heading';
-import { smthWentWrong } from '../app/shared/constants';
-import styles from '../app/assets/styles/404.module.scss';
+
+import { smthWentWrong } from '@/shared/constants';
 
 const Error: FC = () => {
   const router = useRouter();
@@ -17,7 +17,7 @@ const Error: FC = () => {
 
   return (
     <Meta title="Error">
-      <div className={styles.Wrapper}>
+      <div className="flex-center-center p-3 text-center min-h-full">
         <div>
           <Heading text="404" />
           <Heading tag="h2" text={smthWentWrong} />

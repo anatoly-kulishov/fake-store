@@ -861,6 +861,12 @@ module.exports = {
           objectPosition: "center",
           objectFit: "cover",
           pointerEvents: "none"
+        },
+
+        ".text-overflow-ellipsis": {
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          textOverflow: "ellipsis"
         }
       });
     })

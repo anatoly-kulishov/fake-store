@@ -10,6 +10,12 @@ export const SITE_TITLE = 'Fake Store';
 export const SPINNER_SIZE = '40px';
 export const DEFAULT_ICONS_SIZE = '24px';
 export const smthWentWrong = 'Something went wrong, please reload the page';
+export const LOGO_URL: string = 'https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg';
+export const USER_INFO = {
+  name: 'Anatoly Kulishov',
+  email: 'tekkenot95@gmail.com',
+  imageUrl: LOGO_URL,
+};
 
 /**
  * Buttons
