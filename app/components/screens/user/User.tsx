@@ -38,7 +38,7 @@ export const User: FC<IProductProps> = ({ data }) => {
         {data.address.geolocation.long}
       </td>
       <td className="py-4 px-6">
-        <Link href={`${AppRoutesEnum.USERS}/${data.id}`}>
+        <Link href={`${AppRoutesEnum.USERS}/[id]`} as={`${AppRoutesEnum.USERS}/${data.id}`}>
           <span className="font-medium text-blue-600 hover:underline mr-2 cursor-pointer">View</span>
         </Link>
         <span

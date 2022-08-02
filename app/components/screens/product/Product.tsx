@@ -35,7 +35,7 @@ export const Product: FC<IProductProps> = ({ data }) => {
       <td className="py-4 px-6 font-semibold text-gray-900 text-xs">{capitalizeFirstLetter(data.description)}</td>
       <td className="py-4 px-6 font-semibold text-gray-900">{setCurrency(data.price)}</td>
       <td className="py-4 px-6">
-        <Link href={`${AppRoutesEnum.PRODUCTS}/${data.id}`}>
+        <Link href={`${AppRoutesEnum.PRODUCTS}/[id]`} as={`${AppRoutesEnum.PRODUCTS}/${data.id}`}>
           <span className="font-medium text-blue-600 hover:underline mr-2 cursor-pointer">View</span>
         </Link>
         <span
