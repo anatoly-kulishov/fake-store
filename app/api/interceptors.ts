@@ -2,9 +2,10 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 
 import { errorCatch } from './api.helpers';
-import { API_URL } from '../shared/constants';
-import { AuthService } from '../services/auth/auth.service';
-import { removeTokensStorage } from '../services/auth/auth.helper';
+
+import { API_URL } from '@/shared/constants';
+import { AuthService } from '@/services/auth/auth.service';
+import { removeTokensStorage } from '@/services/auth/auth.helper';
 
 const instance = axios.create({
   baseURL: API_URL,
@@ -15,6 +16,7 @@ const instance = axios.create({
 
 instance.interceptors.request.use(config => {
   const accessToken = Cookies.get('accessToken');
+  // eslint-disable-next-line no-param-reassign
   if (config.headers && accessToken) config.headers.Authorization = `Bearer ${accessToken}`;
 
   return config;

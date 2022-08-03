@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
 
-import Meta from '../../app/components/shared/meta';
-import Heading from '../../app/components/ui/heading';
-import { Breadcrumb } from '../../app/components/ui/breadcrumb/Breadcrumb';
+import { api } from '../../app/api/fetch';
 
+import Meta from '@/components/shared/meta';
+import Heading from '@/components/ui/heading';
+import { Breadcrumb } from '@/components/ui/breadcrumb/Breadcrumb';
 import { IUser } from '@/shared/models/user';
 import { API_URL } from '@/shared/constants';
 import { AppRouteKeys, AppRoutesEnum } from '@/shared/models/routes';
 
 export const getStaticPaths = async () => {
-  const response = await fetch(`${API_URL}/users`);
-  const data = await response.json();
+  const response = await api({ url: `${API_URL}/users`, method: 'GET' });
+  const { data } = response;
 
   const paths = data.map(({ id }: { id: number }) => ({
     params: { id: id.toString() },
@@ -18,14 +19,14 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: 'blocking',
+    fallback: false,
   };
 };
 
 export const getStaticProps = async (context: { params: IUser }) => {
   const { id } = context.params;
-  const response = await fetch(`${API_URL}/users/${id}`);
-  const data = await response.json();
+  const response = await api({ url: `${API_URL}/users/${id}`, method: 'GET' });
+  const { data } = response;
 
   if (!data) {
     return {

@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
 
-import Meta from '../../app/components/shared/meta';
+import { api } from '../../app/api/fetch';
 
+import Meta from '@/components/shared/meta';
 import { getProductsUrl } from '@/configs/api.config';
 import { IProduct } from '@/shared/models/product';
 import { API_URL } from '@/shared/constants';
-import Product from '@/screens/product';
+import Product from '@/components/screens/product';
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${API_URL}${getProductsUrl()}`);
-  const data = await response.json();
+  const response = await api({ url: `${API_URL}${getProductsUrl()}`, method: 'GET' });
+  const { data } = response;
 
   if (!data) {
     return {
@@ -48,7 +49,11 @@ const Products: FC<{ posts: IProduct[] }> = ({ posts }) => {
                 </th>
               </tr>
             </thead>
-            <tbody>{posts && posts.map((product: IProduct) => <Product key={product.id} data={product} />)}</tbody>
+            <tbody>
+              {posts?.map((product: IProduct) => (
+                <Product key={product.id} data={product} />
+              ))}
+            </tbody>
           </table>
         </div>
       </div>

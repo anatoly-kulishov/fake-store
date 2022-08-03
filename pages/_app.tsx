@@ -2,9 +2,8 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
 
-import Layout from '../app/components/layout';
-
-import '../app/assets/styles/index.scss';
+import Layout from '@/components/layout';
+import '@/assets/styles/global.scss';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
