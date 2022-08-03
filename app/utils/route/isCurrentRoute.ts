@@ -1,6 +1,3 @@
-export const isCurrentRoute = (route: string, href: string) => {
-  if (route.length === 1 && route === href) {
-    return true;
-  }
+export const isCurrentRoute = (route: string, href: string): boolean => {
   return route === href;
 };

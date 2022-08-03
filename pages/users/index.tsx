@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
 
-import Meta from '../../app/components/shared/meta';
-import { User } from '../../app/components/screens/user/User';
+import { api } from '../../app/api/fetch';
 
+import Meta from '@/components/shared/meta';
+import { User } from '@/components/screens/user/User';
 import { IUser } from '@/shared/models/user';
 import { API_URL } from '@/shared/constants';
 import { getUsersUrl } from '@/configs/api.config';
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${API_URL}${getUsersUrl()}`);
-  const data = await response.json();
+  const response = await api({ url: `${API_URL}${getUsersUrl()}`, method: 'GET' });
+  const { data } = response;
 
   if (!data) {
     return {

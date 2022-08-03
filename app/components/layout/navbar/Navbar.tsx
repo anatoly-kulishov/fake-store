@@ -25,7 +25,7 @@ const userNavigation = [
 ];
 
 export const Navbar: FC = () => {
-  const router = useRouter();
+  const { pathname } = useRouter();
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -46,7 +46,7 @@ export const Navbar: FC = () => {
                         <Link key={item.name} href={item.href}>
                           <a
                             className={classNames(
-                              isCurrentRoute(router.route, item.href)
+                              isCurrentRoute(pathname, item.href)
                                 ? 'bg-gray-900 text-white'
                                 : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                               'px-3 py-2 rounded-md text-sm font-medium',
@@ -121,20 +121,20 @@ export const Navbar: FC = () => {
           </div>
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navigation.map(item => (
+              {navigation.map(navItem => (
                 <Disclosure.Button
-                  key={item.name}
+                  key={navItem.name}
                   as="a"
-                  href={item.href}
+                  href={navItem.href}
                   className={classNames(
-                    isCurrentRoute(router.route, item.href)
+                    isCurrentRoute(pathname, navItem.href)
                       ? 'bg-gray-900 text-white'
                       : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block px-3 py-2 rounded-md text-base font-medium',
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={navItem.current ? 'page' : undefined}
                 >
-                  {item.name}
+                  {navItem.name}
                 </Disclosure.Button>
               ))}
             </div>

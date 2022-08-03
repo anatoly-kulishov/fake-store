@@ -6,7 +6,7 @@ type TypeInput = {
   body?: any;
 };
 
-export const api = async ({ url, method, body }: TypeInput) => {
+export const api = async ({ url, method = 'GET', body }: TypeInput) => {
   return axios({
     method,
     url,

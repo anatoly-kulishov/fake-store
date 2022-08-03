@@ -2,41 +2,21 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Breadcrumb } from '../../app/components/ui/breadcrumb/Breadcrumb';
+import { api } from '../../app/api/fetch';
 
+import { Breadcrumb } from '@/components/ui/breadcrumb/Breadcrumb';
 import { capitalizeFirstLetter } from '@/utils/string/capitalizeFirstLetter';
 import { AppRouteKeys, AppRoutesEnum } from '@/shared/models/routes';
 import { setCurrency } from '@/utils/string/setCurrency';
 import { IProduct } from '@/shared/models/product';
 import { API_URL } from '@/shared/constants';
 import Meta from '@/components/shared/meta';
-import Heading from '@/ui/heading';
+import Heading from '@/components/ui/heading';
 
-export const getStaticPaths = async () => {
-  const response = await fetch(`${API_URL}/products`);
-  const data = await response.json();
-
-  const paths = data.map(({ id }: { id: number }) => ({
-    params: { id: id.toString() },
-  }));
-
-  return {
-    paths,
-    fallback: 'blocking',
-  };
-};
-
-export const getStaticProps = async (context: { params: IProduct }) => {
+export const getServerSideProps = async (context: { params: IProduct }) => {
   const { id } = context.params;
-  let data = [];
-  let error = '';
-
-  try {
-    const response = await fetch(`${API_URL}/products/${id}`);
-    data = await response.json();
-  } catch (e: any) {
-    error = e.toString();
-  }
+  const response = await api({ url: `${API_URL}/products/${id}`, method: 'GET' });
+  const { data } = response;
 
   if (!data) {
     return {
@@ -45,20 +25,18 @@ export const getStaticProps = async (context: { params: IProduct }) => {
   }
 
   return {
-    props: { product: data, error, fallback: 'blocking' },
+    props: { product: data },
   };
 };
 
 interface IProductProps {
   product: IProduct;
-  error: string;
 }
 
-const Product: FC<IProductProps> = ({ product, error }) => {
-  if (error) {
+const Product: FC<IProductProps> = ({ product }) => {
+  if (!product?.id) {
     return <div className="p-5">404</div>;
   }
-
   return (
     <>
       <Meta title={product.title}>

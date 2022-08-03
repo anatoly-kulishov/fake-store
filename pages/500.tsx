@@ -13,10 +13,10 @@ const Error: FC = () => {
   };
 
   return (
-    <Meta title="404">
+    <Meta title="500">
       <div className="flex-center-center p-3 text-center min-h-full">
         <div>
-          <Heading text="404" />
+          <Heading text="500" />
           <Heading tag="h2" text={smthWentWrong} />
           <div className="block mt-2">
             <span className="text-link" onClick={goBackHandler}>

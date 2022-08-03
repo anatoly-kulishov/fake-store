@@ -24,13 +24,7 @@
     "baseUrl": "./app/",
     "paths": {
       "@/components/*": [
-        "components/*"
-      ],
-      "@/ui/*": [
-        "components/ui/*"
-      ],
-      "@/screens/*": [
-        "components/screens/*"
+        "./components/*"
       ],
       "@/shared/*": [
         "shared/*"
