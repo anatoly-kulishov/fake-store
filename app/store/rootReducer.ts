@@ -1,8 +1,8 @@
 import { reducer as toastrReducer } from 'react-redux-toastr';
 
-import { reducer as appReducer } from './app/app.slice';
+import { reducer as userReducer } from './user/user.slice';
 
 export const reducers = {
-  app: appReducer,
+  user: userReducer,
   toastr: toastrReducer,
 };

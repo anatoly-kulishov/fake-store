@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 import { errorCatch } from './api.helpers';
 
-import { API_URL } from '@/shared/constants';
+import { API_URL } from '@/configs/constants';
 import { AuthService } from '@/services/auth/auth.service';
 import { removeTokensStorage } from '@/services/auth/auth.helper';
 

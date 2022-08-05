@@ -1,13 +1,13 @@
 import Cookies from 'js-cookie';
 
-export const saveTokensStorage = (data: any) => {
-  Cookies.set('accessToken', data.accessToken);
-  Cookies.set('refreshToken', data.refreshToken);
+export const saveTokensStorage = (data: string) => {
+  Cookies.set('accessToken', data);
+  Cookies.set('refreshToken', data);
 };
 
-export const saveToStorage = (data: any) => {
+export const saveToStorage = (data: string) => {
   saveTokensStorage(data);
-  localStorage.setItem('user', JSON.stringify(data.app));
+  localStorage.setItem('user', JSON.stringify(data));
 };
 
 export const removeTokensStorage = () => {

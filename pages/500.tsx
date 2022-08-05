@@ -3,13 +3,13 @@ import { useRouter } from 'next/router';
 
 import Meta from '@/components/shared/meta';
 import Heading from '@/components/ui/heading';
-import { smthWentWrong } from '@/shared/constants';
+import { smthWentWrong } from '@/configs/constants';
 
 const Error: FC = () => {
   const router = useRouter();
 
   const goBackHandler = () => {
-    router.back();
+    router.push('/');
   };
 
   return (
@@ -20,7 +20,7 @@ const Error: FC = () => {
           <Heading tag="h2" text={smthWentWrong} />
           <div className="block mt-2">
             <span className="text-link" onClick={goBackHandler}>
-              Go back
+              Go Home
             </span>
           </div>
         </div>

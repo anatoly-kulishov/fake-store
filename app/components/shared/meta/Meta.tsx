@@ -1,14 +1,10 @@
 import React, { FC } from 'react';
 import Head from 'next/head';
 
-interface IMetaProps {
-  title?: string;
-  description?: string;
-  keywords?: string;
-  author?: string;
-}
+import { ISeo } from '@/shared/types/meta.types';
+import { titleMerge } from '@/configs/seo.config';
 
-export const Meta: FC<IMetaProps> = ({
+export const Meta: FC<ISeo> = ({
   children,
   title = 'This is the default title',
   description = 'This is the default description',
@@ -17,13 +13,11 @@ export const Meta: FC<IMetaProps> = ({
 }) => (
   <>
     <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
+      <title>{titleMerge(title)}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       {description && <meta name="description" content={description} />}
       {keywords && <meta name="keywords" content={keywords} />}
       {author && <meta name="author" content={description} />}
-      <link rel="shortcut icon" href="/public/favicon.ico" />
     </Head>
     {children}
   </>

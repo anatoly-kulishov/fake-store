@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 
-import { IBreadcrumbPath } from '@/shared/models';
+import { IBreadcrumbPath } from '@/shared/types';
 
 interface IBreadcrumbProps {
   startPath: IBreadcrumbPath;
