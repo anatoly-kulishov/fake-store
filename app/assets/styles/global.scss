@@ -3,6 +3,7 @@
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
+@import 'react-redux-toastr/src/styles/index';
 
 .layout {
   display: flex;

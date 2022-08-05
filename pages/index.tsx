@@ -1,15 +1,10 @@
 import React from 'react';
 import { NextPage } from 'next';
 
-import Meta from '@/components/shared/meta';
-import MainHero from '@/components/ui/main-hero';
+import Home from '@/components/screens/home';
 
-const IndexPage: NextPage = () => {
-  return (
-    <Meta title="Home page">
-      <MainHero />
-    </Meta>
-  );
+const IndexPage: NextPage = props => {
+  return <Home {...props} />;
 };
 
 export default IndexPage;

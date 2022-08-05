@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { API_URL } from '@/shared/constants';
+import { API_URL } from '@/configs/constants';
 import { getUsersUrl } from '@/configs/api.config';
 
 export const UserService = {

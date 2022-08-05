@@ -1,26 +1,23 @@
 {
   "compilerOptions": {
+    "target": "esnext",
     "allowJs": true,
-    "alwaysStrict": true,
-    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": [
-      "dom",
-      "es2017"
-    ],
+    "noEmit": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "alwaysStrict": true,
+    "jsx": "preserve",
+    "incremental": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "esnext",
-    "incremental": true,
+    //    "ignoreBuildErrors": true,
     "baseUrl": "./app/",
     "paths": {
       "@/components/*": [
@@ -31,6 +28,9 @@
       ],
       "@/hooks/*": [
         "hooks/*"
+      ],
+      "@/providers/*": [
+        "providers/*"
       ],
       "@/services/*": [
         "services/*"
@@ -46,9 +46,23 @@
       ],
       "@/store/*": [
         "store/*"
+      ],
+      "@/api/*": [
+        "api/*"
       ]
-    }
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
   },
+  "lib": [
+    "dom",
+    "es2017",
+    "dom.iterable",
+    "esnext"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

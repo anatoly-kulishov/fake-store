@@ -1,24 +1,17 @@
 import React from 'react';
 import { AppProps } from 'next/app';
-import NextNProgress from 'nextjs-progressbar';
 
-import Layout from '@/components/layout';
+import { TypeComponentAuthFields } from '@/shared/types/auth.types';
+import MainProvider from '@/providers/MainProvider';
 import '@/assets/styles/global.scss';
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+type TypeAppProps = AppProps & TypeComponentAuthFields;
+
+const MyApp = ({ Component, pageProps }: TypeAppProps | any) => {
   return (
-    <Layout>
-      <NextNProgress
-        color="#5a67d8"
-        startPosition={0.3}
-        stopDelayMs={200}
-        height={3}
-        showOnShallow={true}
-        nonce="my-nonce"
-        options={{ easing: 'ease', speed: 500 }}
-      />
+    <MainProvider Component={Component}>
       <Component {...pageProps} />
-    </Layout>
+    </MainProvider>
   );
 };
 

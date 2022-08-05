@@ -867,6 +867,10 @@ module.exports = {
           overflow: "hidden",
           whiteSpace: "nowrap",
           textOverflow: "ellipsis"
+        },
+
+        ".outline-red-600": {
+          outlineColor: "#e53e3e"
         }
       });
     })

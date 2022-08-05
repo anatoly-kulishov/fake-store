@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { SITE_TITLE } from '@/shared/constants';
+import { SITE_TITLE } from '@/configs/constants';
 
 export const MainHero: FC = () => {
   return (

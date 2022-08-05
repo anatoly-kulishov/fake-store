@@ -1,12 +1,11 @@
-import React, { FC } from 'react';
+import React from 'react';
 
-import { api } from '../../app/api/fetch';
-
-import Meta from '@/components/shared/meta';
+import { NextPageAuth } from '@/shared/types/auth.types';
+import { IProduct } from '@/shared/types/product.types';
 import { getProductsUrl } from '@/configs/api.config';
-import { IProduct } from '@/shared/models/product';
-import { API_URL } from '@/shared/constants';
-import Product from '@/components/screens/product';
+import Products from '@/components/screens/products';
+import { API_URL } from '@/configs/constants';
+import { api } from '@/api/fetch';
 
 export const getStaticProps = async () => {
   const response = await api({ url: `${API_URL}${getProductsUrl()}`, method: 'GET' });
@@ -19,46 +18,18 @@ export const getStaticProps = async () => {
   }
 
   return {
-    props: { posts: data, fallback: 'blocking' },
+    props: { products: data, fallback: 'blocking' },
   };
 };
 
-const Products: FC<{ posts: IProduct[] }> = ({ posts }) => {
-  return (
-    <Meta title="Products">
-      <div className="container mx-auto pt-5 pb-5 mt-[50px]">
-        <div className="overflow-x-auto relative shadow-2xl sm:rounded-lg">
-          <table className="w-full text-sm text-left text-gray-500">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-              <tr>
-                <th scope="col" className="py-3 px-6" />
-                <th scope="col" className="py-3 px-6">
-                  <div className="flex items-center">Product</div>
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  <div className="flex items-center">Category</div>
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  <div className="flex items-center">Description</div>
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  <div className="flex items-center">Price</div>
-                </th>
-                <th scope="col" className="py-3 px-6">
-                  <div className="flex items-center">Action</div>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {posts?.map((product: IProduct) => (
-                <Product key={product.id} data={product} />
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </Meta>
-  );
+interface IProductsPageProps {
+  products: IProduct[];
+}
+
+const ProductsPage: NextPageAuth | any = ({ products }: IProductsPageProps) => {
+  return <Products products={products} />;
 };
 
-export default Products;
+ProductsPage.isOnlyAdmin = true;
+
+export default ProductsPage;

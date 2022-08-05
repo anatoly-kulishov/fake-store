@@ -63,7 +63,7 @@ module.exports = {
     "react/jsx-indent-props": "off",
     "no-await-in-loop": "warn",
     "@typescript-eslint/indent": "off",
-    "no-param-reassign": "warn",
+    "no-param-reassign": "off",
     "jsx-a11y/no-autofocus": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-prototype-builtins": "warn",
