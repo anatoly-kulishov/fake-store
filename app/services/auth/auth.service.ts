@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-import { removeTokensStorage, saveToStorage } from './auth.helper';
-
 import { getContentType } from '@/api/api.helpers';
 import { API_URL } from '@/configs/constants';
 import { getAuthUrl } from '@/configs/api.config';
+import { ITokens } from '@/store/user/user.interface';
+
+import { removeTokensStorage, saveToStorage } from './auth.helper';
 
 export const AuthService = {
   async login(username: string, password: string) {
@@ -14,7 +15,10 @@ export const AuthService = {
     });
 
     if (response.data.token) {
-      saveToStorage(response.data.token);
+      saveToStorage({
+        username,
+        token: response.data.token,
+      });
     }
 
     return response;
@@ -29,7 +33,7 @@ export const AuthService = {
       password: '83r5^_',
     };
     // const refreshToken = Cookies.get('refreshToken');
-    const response = await axios.post<any>(
+    const response = await axios.post<ITokens>(
       `${API_URL}${getAuthUrl('/login')}`,
       {
         ...mockRefreshToken,
@@ -40,7 +44,10 @@ export const AuthService = {
     );
 
     if (response.data.accessToken) {
-      saveToStorage(response.data);
+      saveToStorage({
+        username: mockRefreshToken.username,
+        token: response.data.accessToken,
+      });
     }
 
     return response;

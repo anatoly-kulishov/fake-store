@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
-import Navbar from '../navbar';
+import Navigation from '@/components/layout/navigation';
 
 export const Header: FC = () => {
   return (
     <header>
-      <Navbar />
+      <Navigation />
     </header>
   );
 };

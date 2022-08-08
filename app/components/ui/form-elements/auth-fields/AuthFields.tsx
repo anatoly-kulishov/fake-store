@@ -31,7 +31,7 @@ export const AuthFields: FC<IAuthFields> = ({ register, formState: { errors }, i
       </div>
       <div className="mb-6">
         <Field
-          value={'83r5^_'}
+          value="83r5^_"
           {...register(
             'password',
             isPasswordRequired

@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { errorCatch } from 'api/api.helpers';
 import { toastr } from 'react-redux-toastr';
-
-import { IAuthResponse, InterfaceEmailPassword } from './user.interface';
+import axios from 'axios';
 
 import { AuthService } from '@/services/auth/auth.service';
 import { toastError } from '@/utils/api/withToastrErrorRedux';
+
+import { IAuthResponse, InterfaceEmailPassword, ITokens } from './user.interface';
 
 export const loginAC = createAsyncThunk<IAuthResponse, InterfaceEmailPassword>(
   'auth/login',
@@ -13,9 +13,14 @@ export const loginAC = createAsyncThunk<IAuthResponse, InterfaceEmailPassword>(
     try {
       const response = await AuthService.login(username, password);
       toastr.success('Login', 'Completed successfully');
-      return response.data;
+      return {
+        username,
+        token: response.data.token,
+      };
     } catch (error) {
-      toastError(error);
+      if (axios.isAxiosError(error)) {
+        toastError(error);
+      }
       return thunkAPI.rejectWithValue(error);
     }
   },
@@ -25,14 +30,13 @@ export const logoutAC = createAsyncThunk('auth/logout', async () => {
   await AuthService.logout();
 });
 
-export const checkAuthAC = createAsyncThunk<IAuthResponse>('auth/check-auth', async (_, thunkAPI) => {
+export const checkAuthAC = createAsyncThunk<ITokens>('auth/check-auth', async (_, thunkAPI) => {
   try {
     const response = await AuthService.getNewTokens();
     return response.data;
   } catch (error) {
-    if (errorCatch(error) === 'jwt expired') {
+    if (axios.isAxiosError(error)) {
       toastr.error('Logout', 'Your authorizaiton is finished, plz sign in again');
-      thunkAPI.dispatch(logoutAC());
     }
     return thunkAPI.rejectWithValue(error);
   }

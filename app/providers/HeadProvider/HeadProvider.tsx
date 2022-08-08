@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import NextProgressBar from 'nextjs-progressbar';
 import Head from 'next/head';
 
-import Favicons from './Favicons';
-
 import { accentColor } from '@/configs/constants';
+
+import Favicons from './Favicons';
 
 const HeadProvider: FC = ({ children }) => {
   return (

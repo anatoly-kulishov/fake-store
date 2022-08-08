@@ -5,7 +5,7 @@ import MainHero from '@/components/ui/main-hero';
 
 export const Home: FC = () => {
   return (
-    <Meta title="Home page">
+    <Meta title="Home">
       <MainHero />
     </Meta>
   );

@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { getStoreLocal } from '@/utils/storage/local';
+
 import { checkAuthAC, loginAC, logoutAC } from './user.actions';
 import { IUserInitialState } from './user.interface';
 
-import { getStoreLocal } from '@/utils/storage/local';
-
 const initialState: IUserInitialState = {
   user: {
-    token: getStoreLocal('user'),
+    username: getStoreLocal('user')?.username,
+    token: getStoreLocal('user')?.token,
     isAdmin: true,
   },
   isLoading: false,
@@ -25,6 +26,7 @@ export const userSlice = createSlice({
       .addCase(loginAC.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.user = {
+          username: payload.username,
           token: payload.token,
           isAdmin: true,
         };
@@ -34,12 +36,12 @@ export const userSlice = createSlice({
         state.user = null;
       })
       .addCase(logoutAC.fulfilled, state => {
-        state.isLoading = false;
         state.user = null;
       })
       .addCase(checkAuthAC.fulfilled, (state, { payload }) => {
         state.user = {
-          token: payload.token,
+          username: getStoreLocal('user')?.username,
+          token: payload.accessToken,
           isAdmin: true,
         };
       });

@@ -1,8 +1,10 @@
+import { HttpMethods } from '@/shared/types';
+
 import axios from './interceptors';
 
 type TypeInput = {
   url: string;
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  method?: HttpMethods;
   body?: object;
 };
 

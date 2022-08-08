@@ -7,18 +7,12 @@ export const API_URL: string = 'https://fakestoreapi.com';
  * General
  */
 export const SITE_TITLE = 'Fake Store';
-export const SPINNER_SIZE = '40px';
 export const DEFAULT_ICONS_SIZE = '24px';
-export const smthWentWrong = 'Something went wrong, please reload the page';
 export const accentColor = '#5a67d8';
 export const LOGO_URL: string = 'https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg';
 export const IS_SERVER = typeof window === 'undefined';
 export const IS_CLIENT = typeof window !== 'undefined';
-export const USER_INFO = {
-  name: 'Anatoly Kulishov',
-  email: 'tekkenot95@gmail.com',
-  imageUrl: LOGO_URL,
-};
+export const USER_PHOTO = LOGO_URL;
 
 /**
  * Buttons

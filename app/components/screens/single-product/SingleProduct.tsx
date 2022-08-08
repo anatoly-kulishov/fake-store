@@ -48,7 +48,7 @@ export const SingleProduct: FC<IProductProps> = ({ product }) => {
             <div className="text-left border-t-2 pt-2">
               <p className="mb-2 text-gray-700">
                 Category:{' '}
-                <Link href={`#${product.category}`}>
+                <Link href={`#${product.category}`} passHref>
                   <span className="font-bold cursor-pointer">{capitalizeFirstLetter(product.category)}</span>
                 </Link>
               </p>
