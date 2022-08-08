@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Provider } from 'react-redux';
+import { useRouter } from 'next/router';
+
 import { store } from 'store/store';
-
-import HeadProvider from './HeadProvider/HeadProvider';
-import AuthProvider from './AuthProvider/AuthProvider';
-
 import { TypeComponentAuthFields } from '@/shared/types/auth.types';
+import HeadProvider from '@/providers/HeadProvider/HeadProvider';
+import AuthProvider from '@/providers/AuthProvider/AuthProvider';
 import ReduxToastr from '@/components/ui/redux-toastr/ReduxToastr';
+import { isAuthRoute } from '@/utils/route/isAuthRoute';
 import Layout from '@/components/layout';
 
 const queryClient = new QueryClient({
@@ -19,13 +20,15 @@ const queryClient = new QueryClient({
 });
 
 const MainProvider: FC<TypeComponentAuthFields> = ({ children, Component }) => {
+  const { route } = useRouter();
+
   return (
     <HeadProvider>
       <Provider store={store}>
         <QueryClientProvider client={queryClient}>
           <ReduxToastr />
           <AuthProvider Component={Component}>
-            <Layout>{children}</Layout>
+            {isAuthRoute(route) ? <div className="bg-gray-100">{children}</div> : <Layout>{children}</Layout>}
           </AuthProvider>
         </QueryClientProvider>
       </Provider>

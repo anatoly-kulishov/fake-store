@@ -2,26 +2,20 @@ import React, { FC, Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import classNames from 'classnames';
 import Link from 'next/link';
-import Image from 'next/image';
 
-import { AppRouteKeys, AppRoutesEnum } from '@/shared/types/routes.types';
-import { LOGO_URL, SITE_TITLE, USER_INFO } from '@/configs/constants';
-import { isCurrentRoute } from '@/utils/route/isCurrentRoute';
+import { NavList, NavListMobile } from '@/components/layout/navigation/nav-list/NavList';
+import { AppRoutesEnum } from '@/shared/types/routes.types';
+import Logo from '@/components/layout/navigation/logo';
 import { useActions } from '@/hooks/useActions';
-import avatar from '@/assets/images/avatar.jpg';
 import { useAuth } from '@/hooks/useAuth';
-
-const navigation = [
-  { id: 1, name: AppRouteKeys.HOME, href: AppRoutesEnum.HOME, current: true, isAvailable: true },
-  { id: 2, name: AppRouteKeys.PRODUCTS, href: AppRoutesEnum.PRODUCTS, current: false, isAvailable: false },
-  { id: 3, name: AppRouteKeys.USERS, href: AppRoutesEnum.USERS, current: false, isAvailable: false },
-];
+import avatar from '@/assets/images/avatar.jpg';
 
 const userNavigation = [{ name: 'Sign out', href: AppRoutesEnum.AUTH }];
 
-export const Navbar: FC = () => {
+export const Navigation: FC = () => {
   const { pathname } = useRouter();
   const { logoutAC } = useActions();
   const { user } = useAuth();
@@ -33,43 +27,21 @@ export const Navbar: FC = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
-                <div className="flex-shrink-0">
-                  <Link href={AppRoutesEnum.HOME}>
-                    <img className="h-8 w-8 cursor-pointer" src={LOGO_URL} alt={SITE_TITLE} />
-                  </Link>
-                </div>
+                <Logo />
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
-                    {navigation
-                      .filter(item => (!user?.isAdmin && !item.isAvailable ? null : item))
-                      .map(item => {
-                        return (
-                          <Link key={item.name} href={item.href}>
-                            <a
-                              className={classNames(
-                                isCurrentRoute(pathname, item.href)
-                                  ? 'bg-gray-900 text-white'
-                                  : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                'px-3 py-2 rounded-md text-sm font-medium',
-                              )}
-                              aria-current={item.current ? 'page' : undefined}
-                            >
-                              {item.name}
-                            </a>
-                          </Link>
-                        );
-                      })}
+                    <NavList pathname={pathname} isAdmin={user?.isAdmin} />
                   </div>
                 </div>
               </div>
-              {user?.isAdmin ? (
-                <div className="hidden md:block">
+              {user ? (
+                <div className="hidden md:block z-10">
                   <div className="ml-4 flex items-center md:ml-6">
                     <Menu as="div" className="ml-3 relative">
                       <div>
                         <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                           <span className="sr-only">Open user menu</span>
-                          <Image className="h-8 w-8 rounded-full" src={avatar} width={32} height={32} />
+                          <Image className="h-10 w-10 rounded-full" src={avatar} alt="" width={35} height={35} />
                         </Menu.Button>
                       </div>
                       <Transition
@@ -82,19 +54,26 @@ export const Navbar: FC = () => {
                         leaveTo="transform opacity-0 scale-95"
                       >
                         <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+                          <Menu.Item>
+                            <div className="py-2 px-4 border-b-2 border-gray-400 border-opacity-25">
+                              <span className="block text-sm text-indigo-600 dark:text-white font-bold">
+                                {user?.username}
+                              </span>
+                            </div>
+                          </Menu.Item>
                           {userNavigation.map(item => (
                             <Menu.Item key={item.name}>
                               {({ active }) => (
-                                <a
-                                  href={item.href}
+                                <span
                                   onClick={item.name === 'Sign out' ? logoutAC : () => null}
                                   className={classNames(
+                                    'cursor-pointer',
                                     active ? 'bg-gray-100' : '',
                                     'block px-4 py-2 text-sm text-gray-700',
                                   )}
                                 >
                                   {item.name}
-                                </a>
+                                </span>
                               )}
                             </Menu.Item>
                           ))}
@@ -104,8 +83,8 @@ export const Navbar: FC = () => {
                   </div>
                 </div>
               ) : (
-                <Link href="/auth">
-                  <span className="text-red-300 cursor-pointer">Login</span>
+                <Link href={AppRoutesEnum.AUTH}>
+                  <a className="text-red-300">Login</a>
                 </Link>
               )}
               <div className="-mr-2 flex md:hidden">
@@ -122,31 +101,15 @@ export const Navbar: FC = () => {
           </div>
           <Disclosure.Panel className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              {navigation.map(navItem => (
-                <Disclosure.Button
-                  key={navItem.name}
-                  as={'a'}
-                  href={navItem.href}
-                  className={classNames(
-                    isCurrentRoute(pathname, navItem.href)
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium',
-                  )}
-                  aria-current={navItem.current ? 'page' : undefined}
-                >
-                  {navItem.name}
-                </Disclosure.Button>
-              ))}
+              <NavListMobile pathname={pathname} isAdmin={user?.isAdmin} />
             </div>
             <div className="pt-4 pb-3 border-t border-gray-700">
               <div className="flex items-center px-5">
-                <div className="flex-shrink-0">
-                  <img className="h-10 w-10 rounded-full" src={USER_INFO.imageUrl} alt="" />
+                <div className="flex items-center flex-shrink-0">
+                  <Image src={avatar} className="h-10 w-10 rounded-full" width={32} height={32} alt="" />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium leading-none text-white">{USER_INFO.name}</div>
-                  <div className="text-sm font-medium leading-none text-gray-400">{USER_INFO.email}</div>
+                  <div className="text-base font-medium leading-none text-white">{user?.username}</div>
                 </div>
               </div>
               <div className="mt-3 px-2 space-y-1">
@@ -154,6 +117,7 @@ export const Navbar: FC = () => {
                   <Disclosure.Button
                     key={item.name}
                     as="a"
+                    onClick={item.name === 'Sign out' ? logoutAC : () => null}
                     href={item.href}
                     className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
                   >

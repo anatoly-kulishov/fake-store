@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import { useAuth } from '@/hooks/useAuth';
 import { TypeComponentAuthFields } from '@/shared/types/auth.types';
+import { AppRoutesEnum } from '@/shared/types/routes.types';
 
 const CheckRole: FC<TypeComponentAuthFields> = ({ children, Component: { isOnlyAdmin, isOnlyUser } }) => {
   const { user } = useAuth();
@@ -23,7 +24,7 @@ const CheckRole: FC<TypeComponentAuthFields> = ({ children, Component: { isOnlyA
 
   if (isUser && isOnlyUser) return <Children />;
 
-  router.pathname !== '/auth' && router.replace('/auth');
+  router.pathname !== AppRoutesEnum.AUTH && router.replace(AppRoutesEnum.AUTH);
 
   return null;
 };

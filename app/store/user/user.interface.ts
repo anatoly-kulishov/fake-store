@@ -1,6 +1,7 @@
 export interface IUserState {
+  username: string;
   token: string;
-  isAdmin: boolean;
+  isAdmin?: boolean;
 }
 
 export interface ITokens {
@@ -19,5 +20,6 @@ export interface InterfaceEmailPassword {
 }
 
 export interface IAuthResponse {
+  username: string;
   token: string;
 }

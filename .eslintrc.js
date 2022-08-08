@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["airbnb-base", "airbnb-typescript", "plugin:react/recommended", "plugin:prettier/recommended"],
+  extends: ["airbnb-base", "airbnb-typescript", "plugin:react/recommended", "plugin:prettier/recommended", "next", "next/core-web-vitals"],
   plugins: ["react", "@typescript-eslint", "prettier", "react-hooks"],
   env: {
     jest: true,
@@ -22,6 +22,8 @@ module.exports = {
   },
   rules: {
     "react/boolean-prop-naming": ["error", { rule: "^(is|has)[A-Z]([A-Za-z0-9]?)+" }],
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
     "@typescript-eslint/naming-convention": [
       "warn",
       [
@@ -75,6 +77,7 @@ module.exports = {
     "react/no-danger": "error",
     "react/static-property-placement": "off",
     "react/destructuring-assignment": ["error", "always", { ignoreClassFields: true }],
+    "no-underscore-dangle": "off",
     "react/sort-comp": [
       "error",
       {

@@ -1,11 +1,13 @@
 import Cookies from 'js-cookie';
 
-export const saveTokensStorage = (data: string) => {
-  Cookies.set('accessToken', data);
-  Cookies.set('refreshToken', data);
+import { IAuthUser } from '@/components/screens/auth/auth.interface';
+
+export const saveTokensStorage = (data: IAuthUser) => {
+  Cookies.set('accessToken', data.token);
+  Cookies.set('refreshToken', data.token);
 };
 
-export const saveToStorage = (data: string) => {
+export const saveToStorage = (data: IAuthUser) => {
   saveTokensStorage(data);
   localStorage.setItem('user', JSON.stringify(data));
 };
