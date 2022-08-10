@@ -12,6 +12,6 @@ export const useAuthRedirect = () => {
   const redirect = query.redirect ? String(query.redirect) : AppRoutesEnum.HOME;
 
   useEffect(() => {
-    if (user) push(redirect);
+    if (user?.token) push(redirect);
   }, [user, redirect, push]);
 };

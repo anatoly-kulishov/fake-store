@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import { AuthService } from '@/services/auth/auth.service';
 import { toastError } from '@/utils/api/withToastrErrorRedux';
+import { UserService } from '@/services/user/user.service';
 
 import { IAuthResponse, InterfaceEmailPassword, ITokens } from './user.interface';
 
@@ -40,4 +41,23 @@ export const checkAuthAC = createAsyncThunk<ITokens>('auth/check-auth', async (_
     }
     return thunkAPI.rejectWithValue(error);
   }
+});
+
+export const getRandomUserAC = createAsyncThunk('users/get-random-user', async (_, thunkAPI) => {
+  try {
+    const response = await UserService.getRandomUser();
+    return {
+      username: response.data.username,
+      password: response.data.password,
+    };
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      toastError(error);
+    }
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
+export const clearRandomUserAC = createAsyncThunk('users/clear-random-user', async () => {
+  await UserService.getRandomUser();
 });

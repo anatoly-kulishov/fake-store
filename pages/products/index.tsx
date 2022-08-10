@@ -26,7 +26,7 @@ interface IProductsPageProps {
   products: IProduct[];
 }
 
-const ProductsPage: NextPageAuth | any = ({ products }: IProductsPageProps) => {
+const ProductsPage: NextPageAuth<IProductsPageProps> = ({ products }) => {
   return <Products products={products} />;
 };
 

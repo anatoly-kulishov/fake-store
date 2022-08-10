@@ -5,7 +5,7 @@ import { IField } from '@/components/ui/form-elements/form.interface';
 
 const Field = forwardRef<HTMLInputElement, IField>(({ placeholder, error, type = 'text', style, ...rest }, ref) => {
   return (
-    <div className="" style={style}>
+    <div style={style}>
       <label>
         <span className="text-sm">{placeholder}</span>
         <input

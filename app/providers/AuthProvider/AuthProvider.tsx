@@ -6,10 +6,14 @@ import Cookies from 'js-cookie';
 import { TypeComponentAuthFields } from '@/shared/types/auth.types';
 import { useActions } from '@/hooks/useActions';
 import { useAuth } from '@/hooks/useAuth';
+import { IChildren } from '@/shared/types';
 
 const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false });
 
-const AuthProvider: FC<TypeComponentAuthFields> = ({ children, Component: { isOnlyAdmin, isOnlyUser } }) => {
+const AuthProvider: FC<TypeComponentAuthFields & IChildren> = ({
+  children,
+  Component: { isOnlyAdmin, isOnlyUser },
+}) => {
   const { user } = useAuth();
   const { checkAuthAC, logoutAC } = useActions();
   const { pathname } = useRouter();
@@ -27,7 +31,6 @@ const AuthProvider: FC<TypeComponentAuthFields> = ({ children, Component: { isOn
   return !isOnlyAdmin && !isOnlyUser ? (
     <>{children}</>
   ) : (
-    // @ts-ignore
     <DynamicCheckRole Component={{ isOnlyAdmin, isOnlyUser }}>{children}</DynamicCheckRole>
   );
 };

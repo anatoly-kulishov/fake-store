@@ -29,7 +29,7 @@ export const SingleUser: FC<ISingleUserProps> = ({ user }) => {
         <div className="max-w-xs flex flex-row pt-4 bg-white rounded-lg border border-gray-200 shadow-md">
           <div className="max-w-xl px-5 pb-2">
             <Heading tag="h2" text={user.username} classes="mb-2 text-xl font-bold tracking-tight text-gray-900" />
-            <div className="text-left border-t-2 pt-2">
+            <div className="text-left border-t-2 border-t-gray-300 pt-2">
               <p className="mb-2 text-gray-700">
                 Name:{' '}
                 <span className="font-bold">
@@ -45,7 +45,7 @@ export const SingleUser: FC<ISingleUserProps> = ({ user }) => {
               <p className="mb-2 text-gray-700">
                 Phone: <span className="font-bold">{user.phone}</span>
               </p>
-              <div className="border-t-2 pt-2">
+              <div className="border-t-2 border-t-gray-300 pt-2">
                 <p className="mb-2 text-gray-700">
                   City: <span className="font-bold">{user.address.city}</span>
                 </p>

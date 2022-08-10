@@ -10,6 +10,7 @@ import AuthProvider from '@/providers/AuthProvider/AuthProvider';
 import ReduxToastr from '@/components/ui/redux-toastr/ReduxToastr';
 import { isAuthRoute } from '@/utils/route/isAuthRoute';
 import Layout from '@/components/layout';
+import { IChildren } from '@/shared/types';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,7 +20,7 @@ const queryClient = new QueryClient({
   },
 });
 
-const MainProvider: FC<TypeComponentAuthFields> = ({ children, Component }) => {
+const MainProvider: FC<TypeComponentAuthFields & IChildren> = ({ children, Component }) => {
   const { route } = useRouter();
 
   return (

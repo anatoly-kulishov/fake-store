@@ -1,25 +1,31 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Image from 'next/image';
+import classNames from 'classnames';
 
-import Meta from '@/components/shared/meta';
-import AuthFields from '@/components/ui/form-elements/auth-fields';
 import { useAuthRedirect } from '@/components/screens/auth/useAuthRedirect';
 import { IAuthInput } from '@/components/screens/auth/auth.interface';
-import { useAuth } from '@/hooks/useAuth';
+import AuthFields from '@/components/ui/form-elements/auth-fields';
 import { useActions } from '@/hooks/useActions';
+import Meta from '@/components/shared/meta';
+import { useAuth } from '@/hooks/useAuth';
 
 export const Auth: FC = () => {
   useAuthRedirect();
 
-  const { isLoading } = useAuth();
-  const { loginAC } = useActions();
+  const { isLoading, randomUser } = useAuth();
+  const { loginAC, getRandomUserAC, clearRandomUserAC } = useActions();
+
+  const getRandomUserHandler = () => {
+    getRandomUserAC();
+  };
 
   const {
     register: registerInput,
     handleSubmit,
     formState,
     reset,
+    setValue,
   } = useForm<IAuthInput>({
     mode: 'onChange',
   });
@@ -27,7 +33,15 @@ export const Auth: FC = () => {
   const onSubmit: SubmitHandler<IAuthInput> = data => {
     loginAC({ username: data.username, password: data.password });
     reset();
+    clearRandomUserAC();
   };
+
+  useEffect(() => {
+    if (randomUser) {
+      setValue('username', randomUser.username);
+      setValue('password', randomUser.password);
+    }
+  }, [randomUser, setValue]);
 
   return (
     <Meta title="Authentication">
@@ -54,9 +68,26 @@ export const Auth: FC = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="inline-block px-5 py-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                    className={classNames(
+                      'inline-block px-5 mr-2 py-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out',
+                      {
+                        'btn--disabled': isLoading,
+                      },
+                    )}
                   >
                     Login
+                  </button>
+                  <button
+                    type="button"
+                    onClick={getRandomUserHandler}
+                    className={classNames(
+                      'inline-block px-4 py-2 bg-yellow-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-yellow-700 hover:shadow-lg focus:bg-yellow-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-yellow-800 active:shadow-lg transition duration-150 ease-in-out',
+                      {
+                        'btn--disabled': isLoading,
+                      },
+                    )}
+                  >
+                    Random user
                   </button>
                 </div>
               </form>

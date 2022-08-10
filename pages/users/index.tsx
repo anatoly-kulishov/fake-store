@@ -26,7 +26,7 @@ interface IUsersPage {
   users: IUser[];
 }
 
-const UsersPage: NextPageAuth | any = ({ users }: IUsersPage) => {
+const UsersPage: NextPageAuth<IUsersPage> = ({ users }) => {
   return <Users users={users} />;
 };
 

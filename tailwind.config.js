@@ -5,7 +5,10 @@ module.exports = {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true,
   },
-  purge: [],
+  content: [
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "./app/components/**/*.{js,jsx,ts,tsx}"
+  ],
   target: "relaxed",
   prefix: "",
   important: false,

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { getStoreLocal } from '@/utils/storage/local';
 
-import { checkAuthAC, loginAC, logoutAC } from './user.actions';
+import { checkAuthAC, clearRandomUserAC, getRandomUserAC, loginAC, logoutAC } from './user.actions';
 import { IUserInitialState } from './user.interface';
 
 const initialState: IUserInitialState = {
@@ -11,6 +11,7 @@ const initialState: IUserInitialState = {
     token: getStoreLocal('user')?.token,
     isAdmin: true,
   },
+  randomUser: null,
   isLoading: false,
 };
 
@@ -37,6 +38,16 @@ export const userSlice = createSlice({
       })
       .addCase(logoutAC.fulfilled, state => {
         state.user = null;
+      })
+      .addCase(getRandomUserAC.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(getRandomUserAC.fulfilled, (state, { payload }) => {
+        state.randomUser = payload;
+        state.isLoading = false;
+      })
+      .addCase(clearRandomUserAC.fulfilled, state => {
+        state.randomUser = null;
       })
       .addCase(checkAuthAC.fulfilled, (state, { payload }) => {
         state.user = {
