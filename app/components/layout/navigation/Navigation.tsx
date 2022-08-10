@@ -56,9 +56,7 @@ export const Navigation: FC = () => {
                         <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
                           <Menu.Item>
                             <div className="py-2 px-4 border-b-2 border-gray-400 border-opacity-25">
-                              <span className="block text-sm text-indigo-600 dark:text-white font-bold">
-                                {user?.username}
-                              </span>
+                              <span className="block text-sm text-indigo-600 font-bold">{user?.username}</span>
                             </div>
                           </Menu.Item>
                           {userNavigation.map(item => (

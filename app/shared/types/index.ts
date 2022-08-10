@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type Nullable<T> = T | null;
 export type Undetectable<T> = T | undefined;
 
@@ -46,3 +48,7 @@ export const mappedErrorResponseStatusIndex: Record<ErrorResponseStatusEnum, str
   [ErrorResponseStatusEnum.UNAUTHORIZED]: 'Unauthorized',
   [ErrorResponseStatusEnum.BAD_REQUEST]: 'Bad request',
 };
+
+export interface IChildren {
+  children?: React.ReactNode;
+}

@@ -17,7 +17,6 @@ export const AuthFields: FC<IAuthFields> = ({ register, formState: { errors }, i
     <>
       <div className="mb-5">
         <Field
-          value="mor_2314"
           {...register('username', {
             required: 'Username is required!',
             pattern: {
@@ -31,7 +30,6 @@ export const AuthFields: FC<IAuthFields> = ({ register, formState: { errors }, i
       </div>
       <div className="mb-6">
         <Field
-          value="83r5^_"
           {...register(
             'password',
             isPasswordRequired

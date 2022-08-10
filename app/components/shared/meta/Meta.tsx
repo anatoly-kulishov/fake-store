@@ -3,8 +3,9 @@ import Head from 'next/head';
 
 import { ISeo } from '@/shared/types/meta.types';
 import { titleMerge } from '@/configs/seo.config';
+import { IChildren } from '@/shared/types';
 
-export const Meta: FC<ISeo> = ({
+export const Meta: FC<ISeo & IChildren> = ({
   children,
   title = 'This is the default title',
   description = 'This is the default description',

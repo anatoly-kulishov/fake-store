@@ -7,7 +7,7 @@ import Meta from '@/components/shared/meta';
 export const Products: FC<{ products: IProduct[] }> = ({ products }) => {
   return (
     <Meta title="Products">
-      <div className="container mx-auto pt-5 pb-5 mt-[50px]">
+      <div className="container mx-auto py-8">
         <div className="overflow-x-auto relative shadow-2xl sm:rounded-lg">
           <table className="w-full text-sm text-left text-gray-500">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50">

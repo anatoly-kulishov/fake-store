@@ -45,7 +45,7 @@ export const SingleProduct: FC<IProductProps> = ({ product }) => {
           <div className="max-w-xl p-5">
             <Heading tag="h2" text={product.title} classes="mb-2 text-xl font-bold tracking-tight text-gray-900" />
             <p className="mb-3 font-normal text-gray-700 text-sm">{product.description}</p>
-            <div className="text-left border-t-2 pt-2">
+            <div className="text-left border-t-2 border-t-gray-300 pt-2">
               <p className="mb-2 text-gray-700">
                 Category:{' '}
                 <Link href={`#${product.category}`} passHref>

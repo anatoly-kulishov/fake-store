@@ -3,10 +3,11 @@ import NextProgressBar from 'nextjs-progressbar';
 import Head from 'next/head';
 
 import { accentColor } from '@/configs/constants';
+import { IChildren } from '@/shared/types';
 
 import Favicons from './Favicons';
 
-const HeadProvider: FC = ({ children }) => {
+const HeadProvider: FC<IChildren> = ({ children }) => {
   return (
     <>
       <NextProgressBar color={accentColor} startPosition={0.3} stopDelayMs={200} height={3} />

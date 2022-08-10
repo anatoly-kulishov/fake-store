@@ -7,7 +7,7 @@ import { IUser } from '@/shared/types/user.types';
 export const Users: FC<{ users: IUser[] }> = ({ users }) => {
   return (
     <Meta title="Users">
-      <div className="container mx-auto p-5 mt-[50px]">
+      <div className="container mx-auto py-8">
         <div className="overflow-x-auto relative shadow-2xl sm:rounded-lg">
           <table className="w-full text-sm text-left text-gray-500">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50">

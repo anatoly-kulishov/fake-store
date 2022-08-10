@@ -1,3 +1,6 @@
+import { Nullable } from '@/shared/types';
+import { ILoginFormData } from '@/shared/types/auth.types';
+
 export interface IUserState {
   username: string;
   token: string;
@@ -10,7 +13,8 @@ export interface ITokens {
 }
 
 export interface IUserInitialState {
-  user: IUserState | null;
+  user: Nullable<IUserState>;
+  randomUser: Nullable<ILoginFormData>;
   isLoading: boolean;
 }
 

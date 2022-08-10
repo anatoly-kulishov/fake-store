@@ -4,8 +4,9 @@ import { useRouter } from 'next/router';
 import { useAuth } from '@/hooks/useAuth';
 import { TypeComponentAuthFields } from '@/shared/types/auth.types';
 import { AppRoutesEnum } from '@/shared/types/routes.types';
+import { IChildren } from '@/shared/types';
 
-const CheckRole: FC<TypeComponentAuthFields> = ({ children, Component: { isOnlyAdmin, isOnlyUser } }) => {
+const CheckRole: FC<TypeComponentAuthFields & IChildren> = ({ children, Component: { isOnlyAdmin, isOnlyUser } }) => {
   const { user } = useAuth();
   const router = useRouter();
 

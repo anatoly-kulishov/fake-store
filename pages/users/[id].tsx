@@ -40,7 +40,7 @@ interface IUserProps {
   user: IUser;
 }
 
-const UserPage: NextPageAuth | any = ({ user }: IUserProps) => {
+const UserPage: NextPageAuth<IUserProps> = ({ user }) => {
   return <SingleUser user={user} />;
 };
 
