@@ -15,13 +15,14 @@ const AuthProvider: FC<TypeComponentAuthFields & IChildren> = ({
   Component: { isOnlyAdmin, isOnlyUser },
 }) => {
   const { user } = useAuth();
-  const { checkAuthAC, logoutAC } = useActions();
+  const { logoutAC } = useActions();
   const { pathname } = useRouter();
 
-  useEffect(() => {
-    const accessToken = Cookies.get('accessToken');
-    if (accessToken) checkAuthAC();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  // In current API, not available access/refresh
+  // useEffect(() => {
+  //   const accessToken = Cookies.get('accessToken');
+  //   if (accessToken) checkAuthAC();
+  // }, []);
 
   useEffect(() => {
     const refreshToken = Cookies.get('refreshToken');

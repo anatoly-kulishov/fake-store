@@ -6,7 +6,7 @@ import { AuthService } from '@/services/auth/auth.service';
 import { toastError } from '@/utils/api/withToastrErrorRedux';
 import { UserService } from '@/services/user/user.service';
 
-import { IAuthResponse, InterfaceEmailPassword, ITokens } from './user.interface';
+import { IAuthResponse, InterfaceEmailPassword, IToken } from './user.interface';
 
 export const loginAC = createAsyncThunk<IAuthResponse, InterfaceEmailPassword>(
   'auth/login',
@@ -31,7 +31,7 @@ export const logoutAC = createAsyncThunk('auth/logout', async () => {
   await AuthService.logout();
 });
 
-export const checkAuthAC = createAsyncThunk<ITokens>('auth/check-auth', async (_, thunkAPI) => {
+export const checkAuthAC = createAsyncThunk<IToken>('auth/check-auth', async (_, thunkAPI) => {
   try {
     const response = await AuthService.getNewTokens();
     return response.data;

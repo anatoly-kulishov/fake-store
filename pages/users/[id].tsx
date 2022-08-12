@@ -2,9 +2,9 @@ import React from 'react';
 
 import { api } from '@/api/fetch';
 import { IUser } from '@/shared/types/user.types';
-import { API_URL } from '@/configs/constants';
 import SingleUser from '@/components/screens/single-user';
 import { NextPageAuth } from '@/shared/types/auth.types';
+import { API_URL } from '@/configs/constants';
 
 export const getStaticPaths = async () => {
   const response = await api({ url: `${API_URL}/users`, method: 'GET' });

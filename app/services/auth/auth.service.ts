@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 import { getContentType } from '@/api/api.helpers';
-import { API_URL } from '@/configs/constants';
 import { getAuthUrl } from '@/configs/api.config';
-import { ITokens } from '@/store/user/user.interface';
+import { IToken } from '@/store/user/user.interface';
+import { API_URL } from '@/configs/constants';
 
 import { removeTokensStorage, saveToStorage } from './auth.helper';
 
@@ -33,7 +33,7 @@ export const AuthService = {
       password: '83r5^_',
     };
     // const refreshToken = Cookies.get('refreshToken');
-    const response = await axios.post<ITokens>(
+    const response = await axios.post<IToken>(
       `${API_URL}${getAuthUrl('/login')}`,
       {
         ...mockRefreshToken,
@@ -43,10 +43,10 @@ export const AuthService = {
       },
     );
 
-    if (response.data.accessToken) {
+    if (response.data.token) {
       saveToStorage({
         username: mockRefreshToken.username,
-        token: response.data.accessToken,
+        token: response.data.token,
       });
     }
 

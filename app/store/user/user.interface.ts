@@ -12,6 +12,10 @@ export interface ITokens {
   refreshToken: string;
 }
 
+export interface IToken {
+  token: string;
+}
+
 export interface IUserInitialState {
   user: Nullable<IUserState>;
   randomUser: Nullable<ILoginFormData>;

@@ -24,6 +24,7 @@ module.exports = {
     "react/boolean-prop-naming": ["error", { rule: "^(is|has)[A-Z]([A-Za-z0-9]?)+" }],
     "react/no-unescaped-entities": "off",
     "@next/next/no-page-custom-font": "off",
+    "class-methods-use-this": "off",
     "@typescript-eslint/naming-convention": [
       "warn",
       [

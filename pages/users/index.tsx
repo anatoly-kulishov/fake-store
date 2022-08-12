@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { api } from '@/api/fetch';
-import { IUser } from '@/shared/types/user.types';
-import { API_URL } from '@/configs/constants';
-import { getUsersUrl } from '@/configs/api.config';
 import { NextPageAuth } from '@/shared/types/auth.types';
+import { IUser } from '@/shared/types/user.types';
+import { getUsersUrl } from '@/configs/api.config';
 import Users from '@/components/screens/users';
+import { API_URL } from '@/configs/constants';
+import { api } from '@/api/fetch';
 
 export const getStaticProps = async () => {
   const response = await api({ url: `${API_URL}${getUsersUrl()}`, method: 'GET' });

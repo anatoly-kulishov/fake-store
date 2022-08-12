@@ -52,7 +52,7 @@ export const userSlice = createSlice({
       .addCase(checkAuthAC.fulfilled, (state, { payload }) => {
         state.user = {
           username: getStoreLocal('user')?.username,
-          token: payload.accessToken,
+          token: payload.token,
           isAdmin: true,
         };
       });
