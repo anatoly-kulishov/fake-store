@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HamburgeIcon from '@/components/shared/icons/HamburgeIcon';
+import HamburgerIcon from '@/components/shared/icons/HamburgerIcon';
 
 export const MobileMenuButton = () => {
   return (
@@ -12,7 +12,7 @@ export const MobileMenuButton = () => {
       aria-expanded="false"
     >
       <span className="sr-only">Open main menu</span>
-      <HamburgeIcon />
+      <HamburgerIcon />
     </button>
   );
 };

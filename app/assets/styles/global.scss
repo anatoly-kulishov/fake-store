@@ -27,10 +27,10 @@
 
 .emoji-404 {
   position: relative;
-  animation: mymove 2.5s infinite;
+  animation: myMove 2.5s infinite;
 }
 
-@keyframes mymove {
+@keyframes myMove {
   33% {
     top: 0;
   }

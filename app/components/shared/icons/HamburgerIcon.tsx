@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { DEFAULT_ICONS_SIZE } from '@/configs/constants';
 import { IconComponent } from '@/shared/types';
 
-const HamburgeIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE }) => {
+const HamburgerIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE }) => {
   return (
     <svg
       className="w-6 h-6"
@@ -23,4 +23,4 @@ const HamburgeIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE }) => {
   );
 };
 
-export default HamburgeIcon;
+export default HamburgerIcon;

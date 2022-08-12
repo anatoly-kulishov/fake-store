@@ -2,9 +2,9 @@ import React from 'react';
 
 import { SingleProduct } from '@/components/screens/single-product/SingleProduct';
 import { IProduct } from '@/shared/types/product.types';
+import { NextPageAuth } from '@/shared/types/auth.types';
 import { API_URL } from '@/configs/constants';
 import { api } from '@/api/fetch';
-import { NextPageAuth } from '@/shared/types/auth.types';
 
 export const getServerSideProps = async (context: { params: IProduct }) => {
   const { id } = context.params;
