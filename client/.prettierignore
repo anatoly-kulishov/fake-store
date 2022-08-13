@@ -6,7 +6,6 @@ tsconfig.json
 public
 .eslintignore
 .prettierignore
-*.png
 .gitignore
 .gitlab-ci.yml
 next.config.js
