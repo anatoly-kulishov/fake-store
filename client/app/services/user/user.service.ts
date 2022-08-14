@@ -6,10 +6,16 @@ import { IUser } from '@/shared/types/user.types';
 import { API_URL } from '@/configs/constants';
 
 export const UserService = {
+  async getAllUsers() {
+    return axios.get<IUser[]>(`${API_URL}${getUsersUrl()}`);
+  },
+  async getUserById(id: number) {
+    return axios.get<IUser>(`${API_URL}${getUsersUrl(`/${id}`)}`);
+  },
   async getRandomUser() {
     return axios.get<IUser>(`${API_URL}${getUsersUrl(`/${randomIntFromInterval(1, 10)}`)}`);
   },
-  async delete(id: number) {
+  async deleteUserById(id: number) {
     return axios.delete<IUser>(`${API_URL}${getUsersUrl(`/${id}`)}`);
   },
 };

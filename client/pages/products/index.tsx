@@ -1,24 +1,21 @@
 import React from 'react';
 
+import { ProductService } from '@/services/product/product.service';
 import { NextPageAuth } from '@/shared/types/auth.types';
 import { IProduct } from '@/shared/types/product.types';
-import { getProductsUrl } from '@/configs/api.config';
 import Products from '@/components/screens/products';
-import { API_URL } from '@/configs/constants';
-import { api } from '@/api/fetch';
 
 export const getStaticProps = async () => {
-  const response = await api({ url: `${API_URL}${getProductsUrl()}`, method: 'GET' });
-  const { data } = response;
+  const { data: products } = await ProductService.getAllProducts();
 
-  if (!data) {
+  if (!products) {
     return {
       notFound: true,
     };
   }
 
   return {
-    props: { products: data, fallback: 'blocking' },
+    props: { products, fallback: 'blocking' },
   };
 };
 

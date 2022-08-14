@@ -43,7 +43,7 @@ export const User: FC<IProductProps> = ({ data }) => {
         </Link>
         <span
           className="font-medium text-red-600 hover:underline cursor-pointer"
-          onClick={() => data.id && UserService.delete(data.id)}
+          onClick={() => data.id && UserService.deleteUserById(data.id)}
         >
           Remove
         </span>

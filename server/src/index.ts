@@ -2,7 +2,7 @@ import express from "express";
 import { HTTP_STATUSES } from "./shared/constants";
 
 export const app = express();
-const port = 3000;
+const port = 5000;
 
 const jsonBodyMiddleware = express.json();
 app.use(jsonBodyMiddleware);

@@ -1,16 +1,14 @@
 import React from 'react';
 
-import { api } from '@/api/fetch';
-import { IUser } from '@/shared/types/user.types';
 import SingleUser from '@/components/screens/single-user';
 import { NextPageAuth } from '@/shared/types/auth.types';
-import { API_URL } from '@/configs/constants';
+import { IUser } from '@/shared/types/user.types';
+import { UserService } from '@/services/user/user.service';
 
 export const getStaticPaths = async () => {
-  const response = await api({ url: `${API_URL}/users`, method: 'GET' });
-  const { data } = response;
+  const { data: users } = await UserService.getAllUsers();
 
-  const paths = data.map(({ id }: { id: number }) => ({
+  const paths = users.map(({ id }: { id: number }) => ({
     params: { id: id.toString() },
   }));
 
@@ -22,17 +20,16 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: { params: IUser }) => {
   const { id } = context.params;
-  const response = await api({ url: `${API_URL}/users/${id}`, method: 'GET' });
-  const { data } = response;
+  const { data: user } = await UserService.getUserById(id);
 
-  if (!data) {
+  if (!user) {
     return {
       notFound: true,
     };
   }
 
   return {
-    props: { user: data, fallback: 'blocking' },
+    props: { user, fallback: 'blocking' },
   };
 };
 
