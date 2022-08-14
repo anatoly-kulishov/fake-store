@@ -2,23 +2,20 @@ import React from 'react';
 
 import { NextPageAuth } from '@/shared/types/auth.types';
 import { IUser } from '@/shared/types/user.types';
-import { getUsersUrl } from '@/configs/api.config';
 import Users from '@/components/screens/users';
-import { API_URL } from '@/configs/constants';
-import { api } from '@/api/fetch';
+import { UserService } from '@/services/user/user.service';
 
 export const getStaticProps = async () => {
-  const response = await api({ url: `${API_URL}${getUsersUrl()}`, method: 'GET' });
-  const { data } = response;
+  const { data: users } = await UserService.getAllUsers();
 
-  if (!data) {
+  if (!users) {
     return {
       notFound: true,
     };
   }
 
   return {
-    props: { users: data, fallback: 'blocking' },
+    props: { users, fallback: 'blocking' },
   };
 };
 

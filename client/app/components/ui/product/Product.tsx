@@ -38,7 +38,7 @@ export const Product: FC<IProductProps> = ({ data }) => {
         </Link>
         <span
           className="font-medium text-red-600 hover:underline cursor-pointer"
-          onClick={() => data.id && ProductService.delete(data.id)}
+          onClick={() => data.id && ProductService.deleteProductById(data.id)}
         >
           Remove
         </span>
