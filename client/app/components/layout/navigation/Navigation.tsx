@@ -2,8 +2,8 @@ import React, { FC, Fragment } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import classNames from 'classnames';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { NavList, NavListMobile } from '@/components/layout/navigation/nav-list/NavList';

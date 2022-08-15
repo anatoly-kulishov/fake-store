@@ -1,15 +1,11 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 
+import { IUserRowProps } from '@/components/ui/user-row/UserRow.props';
 import { AppRoutesEnum } from '@/shared/types/routes.types';
 import { UserService } from '@/services/user/user.service';
-import { IUser } from '@/shared/types/user.types';
 
-interface IProductProps {
-  data: IUser;
-}
-
-export const User: FC<IProductProps> = ({ data }) => {
+export const UserRow: FC<IUserRowProps> = ({ data }) => {
   return (
     <tr key={data.id} className="bg-white border-b">
       <td className="p-4 w-4">

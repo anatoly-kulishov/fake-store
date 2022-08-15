@@ -7,6 +7,7 @@ import { TypeComponentAuthFields } from '@/shared/types/auth.types';
 import { useActions } from '@/hooks/useActions';
 import { useAuth } from '@/hooks/useAuth';
 import { IChildren } from '@/shared/types';
+import { checkAuthAC } from '@/store/user/user.actions';
 
 const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false });
 
@@ -19,15 +20,15 @@ const AuthProvider: FC<TypeComponentAuthFields & IChildren> = ({
   const { pathname } = useRouter();
 
   // In current API, not available access/refresh
-  // useEffect(() => {
-  //   const accessToken = Cookies.get('accessToken');
-  //   if (accessToken) checkAuthAC();
-  // }, []);
+  useEffect(() => {
+    const accessToken = Cookies.get('accessToken');
+    if (accessToken) checkAuthAC();
+  }, []);
 
   useEffect(() => {
     const refreshToken = Cookies.get('refreshToken');
     if (!refreshToken && user) logoutAC();
-  }, [pathname]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [logoutAC, pathname, user]);
 
   return !isOnlyAdmin && !isOnlyUser ? (
     <>{children}</>

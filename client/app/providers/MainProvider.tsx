@@ -9,8 +9,8 @@ import HeadProvider from '@/providers/HeadProvider/HeadProvider';
 import AuthProvider from '@/providers/AuthProvider/AuthProvider';
 import ReduxToastr from '@/components/ui/redux-toastr/ReduxToastr';
 import { isAuthRoute } from '@/utils/route/isAuthRoute';
-import Layout from '@/components/layout';
 import { IChildren } from '@/shared/types';
+import Layout from '@/components/layout';
 
 const queryClient = new QueryClient({
   defaultOptions: {

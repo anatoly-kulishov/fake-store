@@ -2,19 +2,15 @@ import React, { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Breadcrumb } from '@/components/ui/breadcrumb/Breadcrumb';
-import { AppRouteKeys, AppRoutesEnum } from '@/shared/types/routes.types';
+import { IProductScreenProps } from '@/components/screens/single-product/SingleProduct.props';
 import { capitalizeFirstLetter } from '@/utils/string/capitalizeFirstLetter';
+import { AppRouteKeys, AppRoutesEnum } from '@/shared/types/routes.types';
+import { Breadcrumb } from '@/components/ui/breadcrumb/Breadcrumb';
 import { setCurrency } from '@/utils/string/setCurrency';
-import { IProduct } from '@/shared/types/product.types';
 import Heading from '@/components/ui/heading';
 import Meta from '@/components/shared/meta';
 
-interface IProductProps {
-  product: IProduct;
-}
-
-export const SingleProduct: FC<IProductProps> = ({ product }) => {
+export const SingleProduct: FC<IProductScreenProps> = ({ product }) => {
   return (
     <Meta title={product.title}>
       <div className="max-w-6xl p-5">
@@ -43,7 +39,7 @@ export const SingleProduct: FC<IProductProps> = ({ product }) => {
             />
           </div>
           <div className="max-w-xl p-5">
-            <Heading tag="h2" text={product.title} classes="mb-2 text-xl font-bold tracking-tight text-gray-900" />
+            <Heading tag="h2" text={product.title} className="mb-2 text-xl font-bold tracking-tight text-gray-900" />
             <p className="mb-3 font-normal text-gray-700 text-sm">{product.description}</p>
             <div className="text-left border-t-2 border-t-gray-300 pt-2">
               <p className="mb-2 text-gray-700">

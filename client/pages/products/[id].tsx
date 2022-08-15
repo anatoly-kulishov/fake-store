@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SingleProduct } from '@/components/screens/single-product/SingleProduct';
+import SingleProduct from '@/components/screens/single-product';
 import { ProductService } from '@/services/product/product.service';
 import { NextPageAuth } from '@/shared/types/auth.types';
 import { IProduct } from '@/shared/types/product.types';

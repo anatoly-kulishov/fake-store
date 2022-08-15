@@ -25,12 +25,12 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(loginAC.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
         state.user = {
           username: payload.username,
           token: payload.token,
           isAdmin: true,
         };
+        state.isLoading = false;
       })
       .addCase(loginAC.rejected, state => {
         state.isLoading = false;

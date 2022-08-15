@@ -1,9 +1,9 @@
 import React from 'react';
 
+import { UserService } from '@/services/user/user.service';
 import SingleUser from '@/components/screens/single-user';
 import { NextPageAuth } from '@/shared/types/auth.types';
 import { IUser } from '@/shared/types/user.types';
-import { UserService } from '@/services/user/user.service';
 
 export const getStaticPaths = async () => {
   const { data: users } = await UserService.getAllUsers();

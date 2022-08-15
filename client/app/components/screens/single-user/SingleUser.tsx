@@ -1,16 +1,12 @@
 import React, { FC } from 'react';
 
-import Meta from '@/components/shared/meta';
-import { IUser } from '@/shared/types/user.types';
-import Breadcrumb from '@/components/ui/breadcrumb';
+import { ISingleUserScreenProps } from '@/components/screens/single-user/SingleUser.props';
 import { AppRouteKeys, AppRoutesEnum } from '@/shared/types/routes.types';
+import Breadcrumb from '@/components/ui/breadcrumb';
 import Heading from '@/components/ui/heading';
+import Meta from '@/components/shared/meta';
 
-interface ISingleUserProps {
-  user: IUser;
-}
-
-export const SingleUser: FC<ISingleUserProps> = ({ user }) => {
+export const SingleUser: FC<ISingleUserScreenProps> = ({ user }) => {
   return (
     <Meta title={user.username}>
       <div className="max-w-sm p-5">
@@ -28,7 +24,7 @@ export const SingleUser: FC<ISingleUserProps> = ({ user }) => {
         </div>
         <div className="max-w-xs flex flex-row pt-4 bg-white rounded-lg border border-gray-200 shadow-md">
           <div className="max-w-xl px-5 pb-2">
-            <Heading tag="h2" text={user.username} classes="mb-2 text-xl font-bold tracking-tight text-gray-900" />
+            <Heading tag="h2" text={user.username} className="mb-2 text-xl font-bold tracking-tight text-gray-900" />
             <div className="text-left border-t-2 border-t-gray-300 pt-2">
               <p className="mb-2 text-gray-700">
                 Name:{' '}

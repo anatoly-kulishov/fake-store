@@ -17,7 +17,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    //    "ignoreBuildErrors": true,
     "baseUrl": "./app/",
     "paths": {
       "@/components/*": [

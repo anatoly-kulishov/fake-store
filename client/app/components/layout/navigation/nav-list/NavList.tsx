@@ -3,9 +3,9 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { Disclosure } from '@headlessui/react';
 
+import { INavListProps } from '@/components/layout/navigation/nav-list/NavList.props';
 import { AppRouteKeys, AppRoutesEnum } from '@/shared/types/routes.types';
 import { isCurrentRoute } from '@/utils/route/isCurrentRoute';
-import { Undetectable } from '@/shared/types';
 
 const navigation = [
   { id: 1, name: AppRouteKeys.HOME, href: AppRoutesEnum.HOME, current: true, isAvailable: true },
@@ -13,12 +13,7 @@ const navigation = [
   { id: 3, name: AppRouteKeys.USERS, href: AppRoutesEnum.USERS, current: false, isAvailable: false },
 ];
 
-interface INavList {
-  pathname: string;
-  isAdmin: Undetectable<boolean>;
-}
-
-export const NavList: FC<INavList> = ({ pathname, isAdmin }) => {
+export const NavList: FC<INavListProps> = ({ pathname, isAdmin }) => {
   return (
     <>
       {navigation
@@ -44,7 +39,7 @@ export const NavList: FC<INavList> = ({ pathname, isAdmin }) => {
   );
 };
 
-export const NavListMobile: FC<INavList> = ({ pathname, isAdmin }) => {
+export const NavListMobile: FC<INavListProps> = ({ pathname, isAdmin }) => {
   return (
     <>
       {navigation

@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 
-interface IHeadingProps {
-  text: string | React.ReactElement;
-  tag?: string | React.ElementType;
-  classes?: string;
-}
+import { IHeadingProps } from '@/components/ui/heading/Heading.props';
 
-export const Heading: FC<IHeadingProps> = ({ tag, text, classes }) => {
+export const Heading: FC<IHeadingProps> = ({ tag, text, className, ...props }) => {
   const Tag = tag || 'h1';
-  return <Tag className={`max-w-full ${classes}`}>{text}</Tag>;
+  return (
+    <Tag className={`max-w-full ${className}`} {...props}>
+      {text}
+    </Tag>
+  );
 };
