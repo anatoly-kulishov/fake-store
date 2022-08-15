@@ -1,9 +1,9 @@
 import React from 'react';
 
+import { UserService } from '@/services/user/user.service';
 import { NextPageAuth } from '@/shared/types/auth.types';
 import { IUser } from '@/shared/types/user.types';
 import Users from '@/components/screens/users';
-import { UserService } from '@/services/user/user.service';
 
 export const getStaticProps = async () => {
   const { data: users } = await UserService.getAllUsers();

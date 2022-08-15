@@ -1,5 +1,5 @@
+import { IAuthInput } from '@/components/screens/auth/auth.interface';
 import { Nullable } from '@/shared/types';
-import { ILoginFormData } from '@/shared/types/auth.types';
 
 export interface IUserState {
   username: string;
@@ -18,7 +18,7 @@ export interface IToken {
 
 export interface IUserInitialState {
   user: Nullable<IUserState>;
-  randomUser: Nullable<ILoginFormData>;
+  randomUser: Nullable<IAuthInput>;
   isLoading: boolean;
 }
 

@@ -2,17 +2,13 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { IProduct } from '@/shared/types/product.types';
-import { AppRoutesEnum } from '@/shared/types/routes.types';
-import { ProductService } from '@/services/product/product.service';
+import { IProductRowProps } from '@/components/ui/product-row/ProductRow.props';
 import { capitalizeFirstLetter } from '@/utils/string/capitalizeFirstLetter';
+import { ProductService } from '@/services/product/product.service';
+import { AppRoutesEnum } from '@/shared/types/routes.types';
 import { setCurrency } from '@/utils/string/setCurrency';
 
-interface IProductProps {
-  data: IProduct;
-}
-
-export const Product: FC<IProductProps> = ({ data }) => {
+export const ProductRow: FC<IProductRowProps> = ({ data }) => {
   return (
     <tr className="bg-white border-b hover:bg-gray-50">
       <td className="p-4 w-32">

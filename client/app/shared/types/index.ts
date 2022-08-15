@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { RefObject } from 'react';
 
 export type Nullable<T> = T | null;
 export type Undetectable<T> = T | undefined;
@@ -9,7 +9,7 @@ export interface IChildren {
   children?: React.ReactNode;
 }
 
-export interface IconComponent {
+export interface IconComponent extends Omit<RefObject<SVGElement>, 'className' | 'id' | 'current'> {
   size?: number | string;
 }
 

@@ -1,16 +1,8 @@
 import React, { FC } from 'react';
-import { FormState, UseFormRegister } from 'react-hook-form';
 
-import { IAuthInput } from '@/components/screens/auth/auth.interface';
+import { IAuthFields } from '@/components/ui/form-elements/auth-fields/AuthFields.props';
 import Field from '@/components/ui/form-elements/Field';
 import { validUsername } from '@/shared/regex';
-
-interface IAuthFields {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  register: UseFormRegister<any>;
-  formState: FormState<IAuthInput>;
-  isPasswordRequired?: boolean;
-}
 
 export const AuthFields: FC<IAuthFields> = ({ register, formState: { errors }, isPasswordRequired = false }) => {
   return (

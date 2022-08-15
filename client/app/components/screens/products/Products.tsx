@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 
+import { ProductsScreenProps } from '@/components/screens/products/Products.props';
 import { IProduct } from '@/shared/types/product.types';
-import Product from '@/components/ui/product';
+import ProductRow from '@/components/ui/product-row';
 import Meta from '@/components/shared/meta';
 
-export const Products: FC<{ products: IProduct[] }> = ({ products }) => {
+export const Products: FC<ProductsScreenProps> = ({ products }) => {
   return (
     <Meta title="Products">
       <div className="container mx-auto py-8">
@@ -32,7 +33,7 @@ export const Products: FC<{ products: IProduct[] }> = ({ products }) => {
             </thead>
             <tbody>
               {products.map((product: IProduct) => (
-                <Product key={product.id} data={product} />
+                <ProductRow key={product.id} data={product} />
               ))}
             </tbody>
           </table>

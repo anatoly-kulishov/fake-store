@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
+import { UsersScreenProps } from '@/components/screens/users/Users.props';
+import UserRow from '@/components/ui/user-row';
 import Meta from '@/components/shared/meta';
-import User from '@/components/ui/user';
-import { IUser } from '@/shared/types/user.types';
 
-export const Users: FC<{ users: IUser[] }> = ({ users }) => {
+export const Users: FC<UsersScreenProps> = ({ users }) => {
   return (
     <Meta title="Users">
       <div className="container mx-auto py-8">
@@ -49,7 +49,7 @@ export const Users: FC<{ users: IUser[] }> = ({ users }) => {
             </thead>
             <tbody>
               {users?.map(user => (
-                <User key={user.id} data={user} />
+                <UserRow key={user.id} data={user} />
               ))}
             </tbody>
           </table>

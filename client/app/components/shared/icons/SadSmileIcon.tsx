@@ -3,18 +3,19 @@ import React, { FC } from 'react';
 import { DEFAULT_ICONS_SIZE } from '@/configs/constants';
 import { IconComponent } from '@/shared/types';
 
-const SadSmileIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE }) => {
+const SadSmileIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE, ...props }) => {
   return (
     <svg
+      id="Layer_1"
       className="emoji-404 mx-auto"
       width={size}
       height={size}
       enableBackground="new 0 0 226 249.135"
-      id="Layer_1"
       overflow="visible"
       version="1.1"
       viewBox="0 0 226 249.135"
       xmlSpace="preserve"
+      {...props}
     >
       <circle cx="113" cy="113" fill="#FFE585" r="109" />
       <line

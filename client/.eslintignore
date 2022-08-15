@@ -1,15 +1,8 @@
-/build
-static
 node_modules
 .eslintrc.js
-src/assets/libs
 .gitignore
-.gitlab-ci.yml
-/src/react-app-env.d.ts
-/src/constants/regex.ts
-/src/service-worker.ts
-/src/components/Profile/ProfileInfo/ProfileStatus/ProfileStatus.test.tsx
-/config-overrides.js
 postcss.config.js
 tailwind.config.js
 next.config.js
+.next
+.husky

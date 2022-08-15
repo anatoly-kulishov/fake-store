@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import Head from 'next/head';
 
-import { ISeo } from '@/shared/types/meta.types';
 import { titleMerge } from '@/configs/seo.config';
+import { ISeo } from '@/shared/types/meta.types';
 import { IChildren } from '@/shared/types';
 
 export const Meta: FC<ISeo & IChildren> = ({

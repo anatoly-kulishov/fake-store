@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { DEFAULT_ICONS_SIZE } from '@/configs/constants';
 import { IconComponent } from '@/shared/types';
 
-const HamburgerIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE }) => {
+const HamburgerIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE, ...props }) => {
   return (
     <svg
       className="w-6 h-6"
@@ -13,6 +13,7 @@ const HamburgerIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE }) => {
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
+      {...props}
     >
       <path
         fillRule="evenodd"

@@ -1,29 +1,20 @@
 import React, { FC } from 'react';
 import { useRouter } from 'next/router';
 
-import Meta from '@/components/shared/meta';
-import Heading from '@/components/ui/heading';
+import { IErrorScreenProps } from '@/components/screens/error/Error.props';
 import SadSmileIcon from '@/components/shared/icons/SadSmileIcon';
 import { addSeparator } from '@/utils/string/addSeparator';
 import { ErrorResponseStatusEnum } from '@/shared/types';
+import Heading from '@/components/ui/heading';
+import Meta from '@/components/shared/meta';
 
-interface IError {
-  code: string | number;
-  text: string;
-}
-
-export const Error: FC<IError> = ({ code, text }) => {
+export const Error: FC<IErrorScreenProps> = ({ code, text }) => {
   const router = useRouter();
   const stringCode = String(code);
   const isCatchesError: boolean = code === ErrorResponseStatusEnum.STH_WENT_WRONG;
 
-  const goBackHandler = () => {
-    router.back();
-  };
-
-  const reloadHandler = () => {
-    router.reload();
-  };
+  const reloadHandler = () => router.reload();
+  const goBackHandler = () => router.back();
 
   return (
     <Meta title={stringCode}>

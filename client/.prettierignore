@@ -1,5 +1,4 @@
 .husky
-**/node_modules/
 **/*.scss
 package*.json
 tsconfig.json
@@ -7,5 +6,4 @@ public
 .eslintignore
 .prettierignore
 .gitignore
-.gitlab-ci.yml
 next.config.js
