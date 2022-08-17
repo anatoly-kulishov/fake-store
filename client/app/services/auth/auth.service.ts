@@ -1,15 +1,17 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 import { getContentType } from '@/api/api.helpers';
 import { getAuthUrl } from '@/configs/api.config';
 import { IToken } from '@/store/user/user.interface';
 import { API_URL } from '@/configs/constants';
+import { axiosClassic } from '@/api/interceptors';
 
 import { removeTokensStorage, saveToStorage } from './auth.helper';
 
 export const AuthService = {
   async login(username: string, password: string) {
-    const response = await axios.post<{ token: string }>(`${API_URL}${getAuthUrl('/login')}`, {
+    const response = await axiosClassic.post<IToken>(getAuthUrl('/login'), {
       username,
       password,
     });
@@ -28,15 +30,11 @@ export const AuthService = {
     localStorage.removeItem('user');
   },
   async getNewTokens() {
-    const mockRefreshToken = {
-      username: 'mor_2314',
-      password: '83r5^_',
-    };
-    // const refreshToken = Cookies.get('refreshToken');
+    const refreshToken = Cookies.get('refreshToken');
     const response = await axios.post<IToken>(
       `${API_URL}${getAuthUrl('/login')}`,
       {
-        ...mockRefreshToken,
+        refreshToken,
       },
       {
         headers: getContentType(),
@@ -45,7 +43,7 @@ export const AuthService = {
 
     if (response.data.token) {
       saveToStorage({
-        username: mockRefreshToken.username,
+        username: refreshToken || 'guest',
         token: response.data.token,
       });
     }

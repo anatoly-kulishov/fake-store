@@ -1,17 +1,15 @@
-import axios from 'axios';
-
-import { getProductsUrl } from '@/configs/api.config';
 import { IProduct } from '@/shared/types/product.types';
-import { API_URL } from '@/configs/constants';
+import { getProductsUrl } from '@/configs/api.config';
+import { axiosClassic } from '@/api/interceptors';
 
 export const ProductService = {
   async getAllProducts() {
-    return axios.get<IProduct[]>(`${API_URL}${getProductsUrl()}`);
+    return axiosClassic.get<IProduct[]>(getProductsUrl());
   },
   async getProductById(id: number) {
-    return axios.get<IProduct>(`${API_URL}${getProductsUrl(`/${id}`)}`);
+    return axiosClassic.get<IProduct>(getProductsUrl(`/${id}`));
   },
   async deleteProductById(id: number) {
-    await axios.delete<IProduct>(`${API_URL}${getProductsUrl(`/${id}`)}`);
+    await axiosClassic.delete<IProduct>(getProductsUrl(`/${id}`));
   },
 };

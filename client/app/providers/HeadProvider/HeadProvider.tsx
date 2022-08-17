@@ -7,7 +7,7 @@ import { IChildren } from '@/shared/types';
 
 import Favicons from './Favicons';
 
-const HeadProvider: FC<IChildren> = ({ children }) => {
+const HeadProvider: FC<IChildren & { route: string }> = ({ children, route }) => {
   return (
     <>
       <NextProgressBar color={accentColor} startPosition={0.3} stopDelayMs={200} height={3} />
@@ -15,9 +15,10 @@ const HeadProvider: FC<IChildren> = ({ children }) => {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
         <Favicons />
-        <meta name="theme-color" content={'#1a202c'} />
-        <meta name="msapplication-navbutton-color" content={'#1a202c'} />
-        <meta name="apple-mobile-web-app-status-bar-style" content={'#1a202c'} />
+        <meta name="theme-color" content={accentColor} />
+        <meta name="msapplication-navbutton-color" content={accentColor} />
+        <meta name="apple-mobile-web-app-status-bar-style" content={accentColor} />
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_DOMAIN}${route}`} />
       </Head>
       {children}
     </>
