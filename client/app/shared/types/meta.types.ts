@@ -3,4 +3,5 @@ export interface ISeo {
   description?: string;
   keywords?: string;
   author?: string;
+  type?: string;
 }

@@ -1,7 +1,9 @@
+import { Undetectable } from '@/shared/types';
+
 /**
  * API
  */
-export const API_URL: string = 'https://fakestoreapi.com';
+export const API_URL: Undetectable<string> = `${process.env.NEXT_PUBLIC_API}`;
 
 /**
  * General

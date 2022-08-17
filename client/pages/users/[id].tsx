@@ -1,11 +1,17 @@
 import React from 'react';
+import { GetStaticPaths } from 'next';
 
 import { UserService } from '@/services/user/user.service';
 import SingleUser from '@/components/screens/single-user';
 import { NextPageAuth } from '@/shared/types/auth.types';
 import { IUser } from '@/shared/types/user.types';
 
-export const getStaticPaths = async () => {
+/**
+ * Получает пути страниц для статической генераций.
+ * Когда использовать?
+ * Для рендера страниц с динамическими адресами
+ */
+export const getStaticPaths: GetStaticPaths = async () => {
   const { data: users } = await UserService.getAllUsers();
 
   const paths = users.map(({ id }: { id: number }) => ({
@@ -18,6 +24,13 @@ export const getStaticPaths = async () => {
   };
 };
 
+/**
+ * Получает данные для статической генерации.
+ * Когда использовать?
+ * Данные для рендера доступны во время сборки
+ * Данные могут быть публично закэшированы
+ * Страница должна быть доступна для индексирования
+ */
 export const getStaticProps = async (context: { params: IUser }) => {
   const { id } = context.params;
   const { data: user } = await UserService.getUserById(id);
@@ -29,7 +42,7 @@ export const getStaticProps = async (context: { params: IUser }) => {
   }
 
   return {
-    props: { user, fallback: 'blocking' },
+    props: { user },
   };
 };
 

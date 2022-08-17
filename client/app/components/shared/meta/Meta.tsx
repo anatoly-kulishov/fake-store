@@ -7,18 +7,22 @@ import { IChildren } from '@/shared/types';
 
 export const Meta: FC<ISeo & IChildren> = ({
   children,
-  title = 'This is the default title',
-  description = 'This is the default description',
-  keywords = 'This is the default keywords',
-  author = 'This is the default author',
+  title = 'Default title',
+  description = 'Default description',
+  keywords = 'Default keywords',
+  author = 'Default author',
+  type = 'article',
 }) => (
   <>
     <Head>
       <title>{titleMerge(title)}</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      {description && <meta name="description" content={description} />}
-      {keywords && <meta name="keywords" content={keywords} />}
-      {author && <meta name="author" content={description} />}
+      <meta property="og:title" content={titleMerge('')} />
+      <meta name="description" content={description} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content={type} />
+      <meta name="keywords" content={keywords} />
+      <meta name="author" content={author} />
     </Head>
     {children}
   </>
