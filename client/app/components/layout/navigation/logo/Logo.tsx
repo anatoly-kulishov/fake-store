@@ -7,12 +7,10 @@ import { LOGO_URL, SITE_TITLE } from '@/configs/constants';
 
 export const Logo: FC = () => {
   return (
-    <div className="flex items-center flex-shrink-0">
-      <Link href={AppRoutesEnum.HOME} passHref>
-        <>
-          <Image src={LOGO_URL} className="h-8 w-8 cursor-pointer" width={32} height={32} alt={SITE_TITLE} />
-        </>
-      </Link>
-    </div>
+    <Link href={AppRoutesEnum.HOME}>
+      <a className="flex items-center flex-shrink-0">
+        <Image src={LOGO_URL} className="h-8 w-8 cursor-pointer" width={32} height={32} alt={SITE_TITLE} />
+      </a>
+    </Link>
   );
 };

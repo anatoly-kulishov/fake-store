@@ -44,8 +44,10 @@ export const SingleProduct: FC<IProductScreenProps> = ({ product }) => {
             <div className="text-left border-t-2 border-t-gray-300 pt-2">
               <p className="mb-2 text-gray-700">
                 Category:{' '}
-                <Link href={`#${product.category}`} passHref>
-                  <span className="font-bold cursor-pointer">{capitalizeFirstLetter(product.category)}</span>
+                <Link href={`#${product.category}`}>
+                  <a className="font-bold hover:opacity-75 focus:opacity-75 cursor-pointer">
+                    {capitalizeFirstLetter(product.category)}
+                  </a>
                 </Link>
               </p>
               <p className="mb-2 text-gray-700">

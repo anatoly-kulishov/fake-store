@@ -39,7 +39,10 @@ export const Navigation: FC = () => {
                   <div className="ml-4 flex items-center md:ml-6">
                     <Menu as="div" className="ml-3 relative">
                       <div>
-                        <Menu.Button className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                        <Menu.Button
+                          className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                          tabIndex={0}
+                        >
                           <span className="sr-only">Open user menu</span>
                           <Image className="h-10 w-10 rounded-full" src={avatar} alt="" width={35} height={35} />
                         </Menu.Button>

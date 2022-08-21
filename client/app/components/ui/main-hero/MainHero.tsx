@@ -13,7 +13,7 @@ export const MainHero: FC = () => {
               <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                 <span className="block text-indigo-600 xl:inline">{SITE_TITLE}</span>
               </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+              <p className="mt-3 text-base text-gray-700 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae blanditiis consequatur doloremque hic
                 maxime! Accusamus accusantium alias consequatur consequuntur et exercitationem fuga pariatur perferendis
                 voluptate. Nihil officia optio quam suscipit?

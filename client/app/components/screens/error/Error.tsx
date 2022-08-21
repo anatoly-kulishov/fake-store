@@ -7,6 +7,7 @@ import { addSeparator } from '@/utils/string/addSeparator';
 import { ErrorResponseStatusEnum } from '@/shared/types';
 import Heading from '@/components/ui/heading';
 import Meta from '@/components/shared/meta';
+import { keyEventHandler } from '@/utils/events/keyEventHandler';
 
 export const Error: FC<IErrorScreenProps> = ({ code, text }) => {
   const router = useRouter();
@@ -33,15 +34,19 @@ export const Error: FC<IErrorScreenProps> = ({ code, text }) => {
             <div className="mt-6 p-1 text-center">
               {!isCatchesError ? (
                 <span
-                  onClick={goBackHandler}
                   className="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md cursor-pointer"
+                  onClick={goBackHandler}
+                  onKeyDown={event => keyEventHandler(event.code, goBackHandler)}
+                  tabIndex={0}
                 >
                   Go back{' '}
                 </span>
               ) : (
                 <span
-                  onClick={reloadHandler}
                   className="text-gray-500 font-mono text-xl bg-gray-200 p-3 rounded-md hover:shadow-md cursor-pointer"
+                  onClick={reloadHandler}
+                  onKeyDown={event => keyEventHandler(event.code, reloadHandler)}
+                  tabIndex={0}
                 >
                   Try again?
                 </span>
