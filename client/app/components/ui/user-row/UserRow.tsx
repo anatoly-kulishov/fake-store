@@ -6,6 +6,10 @@ import { AppRoutesEnum } from '@/shared/types/routes.types';
 import { UserService } from '@/services/user/user.service';
 
 export const UserRow: FC<IUserRowProps> = ({ data }) => {
+  const deleteUserHandler = (): void => {
+    UserService.deleteUserById(data.id);
+  };
+
   return (
     <tr key={data.id} className="bg-white border-b">
       <td className="p-4 w-4">
@@ -34,15 +38,20 @@ export const UserRow: FC<IUserRowProps> = ({ data }) => {
         {data.address.geolocation.long}
       </td>
       <td className="py-4 px-6">
-        <Link href={`${AppRoutesEnum.USERS}/[id]`} as={`${AppRoutesEnum.USERS}/${data.id}`} passHref>
-          <span className="font-medium text-blue-600 hover:underline mr-2 cursor-pointer">View</span>
-        </Link>
-        <span
-          className="font-medium text-red-600 hover:underline cursor-pointer"
-          onClick={() => data.id && UserService.deleteUserById(data.id)}
-        >
-          Remove
-        </span>
+        <div className="flex m-auto h-full">
+          <Link href={`${AppRoutesEnum.USERS}/[id]`} as={`${AppRoutesEnum.USERS}/${data.id}`} passHref>
+            <a className="font-medium text-blue-600 transition-colors hover:text-blue-800 focus:text-blue-800 mr-2 cursor-pointer">
+              View
+            </a>
+          </Link>
+          <button
+            className="font-medium text-red-600 transition-all hover:text-red-800 focus:text-red-800"
+            onClick={deleteUserHandler}
+            disabled={!data?.id}
+          >
+            Remove
+          </button>
+        </div>
       </td>
     </tr>
   );

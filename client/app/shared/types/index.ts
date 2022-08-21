@@ -24,6 +24,11 @@ export enum ErrorResponseStatusEnum {
   INTERNAL_SERVER_ERROR = 500,
 }
 
+export enum KeyCodeEnum {
+  ENTER = 'Enter',
+  SPACE = 'Space',
+}
+
 export const mappedErrorResponseStatusIndex: Record<ErrorResponseStatusEnum, string> = {
   [ErrorResponseStatusEnum.STH_WENT_WRONG]: 'Looks like something went wrong, please try again later.',
   [ErrorResponseStatusEnum.NOT_FOUND]: "Sorry, We couldn't find what you are looking for!",
@@ -33,10 +38,6 @@ export const mappedErrorResponseStatusIndex: Record<ErrorResponseStatusEnum, str
 export enum ResultCodesEnum {
   Success = 0,
   Error = 1,
-}
-
-export enum ResultCodesForCaptchaEnum {
-  CaptchaIsRequired = 10,
 }
 
 export interface IBaseResponse {
