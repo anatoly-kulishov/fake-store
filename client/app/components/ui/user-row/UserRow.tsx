@@ -15,11 +15,12 @@ export const UserRow: FC<IUserRowProps> = ({ data }) => {
       <td className="p-4 w-4">
         <div className="flex items-center">
           <input
-            id="checkbox-table-1"
             type="checkbox"
+            id={`checkbox-table-${data.id}`}
+            name={`checkbox-table-${data.id}`}
             className="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500"
           />
-          <label htmlFor="checkbox-table-1" className="sr-only">
+          <label htmlFor={`checkbox-table-${data.id}`} className="sr-only">
             checkbox
           </label>
         </div>

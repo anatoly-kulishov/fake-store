@@ -3,6 +3,8 @@ export enum AppRoutesEnum {
   USERS = '/users',
   PRODUCTS = '/products',
   AUTH = '/auth',
+  UIKIT = '/ui-kit',
+  SEARCH = '/search',
 }
 
 export enum AppRouteKeys {
@@ -10,4 +12,6 @@ export enum AppRouteKeys {
   USERS = 'Users',
   PRODUCTS = 'Products',
   AUTH = 'Auth',
+  UIKIT = 'UI Kit',
+  SEARCH = 'Search',
 }

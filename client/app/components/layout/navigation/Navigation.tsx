@@ -6,9 +6,9 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import Logo from '@/components/layout/navigation/logo';
 import { NavList, NavListMobile } from '@/components/layout/navigation/nav-list/NavList';
 import { AppRoutesEnum } from '@/shared/types/routes.types';
-import Logo from '@/components/layout/navigation/logo';
 import { useActions } from '@/hooks/useActions';
 import { useAuth } from '@/hooks/useAuth';
 import avatar from '@/assets/images/avatar.jpg';
@@ -29,9 +29,7 @@ export const Navigation: FC = () => {
               <div className="flex items-center">
                 <Logo />
                 <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
-                    <NavList pathname={pathname} isAdmin={user?.isAdmin} />
-                  </div>
+                  <NavList pathname={pathname} isAdmin={user?.isAdmin} />
                 </div>
               </div>
               {user ? (
@@ -101,9 +99,7 @@ export const Navigation: FC = () => {
             </div>
           </div>
           <Disclosure.Panel className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <NavListMobile pathname={pathname} isAdmin={user?.isAdmin} />
-            </div>
+            <NavListMobile pathname={pathname} isAdmin={user?.isAdmin} />
             <div className="pt-4 pb-3 border-t border-gray-700">
               <div className="flex items-center px-5">
                 <div className="flex items-center flex-shrink-0">
