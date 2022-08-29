@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React, { SVGProps } from 'react';
 
 export type Nullable<T> = T | null;
 export type Undetectable<T> = T | undefined;
@@ -9,9 +9,9 @@ export interface IChildren {
   children?: React.ReactNode;
 }
 
-export interface IconComponent extends Omit<RefObject<SVGElement>, 'className' | 'id' | 'current'> {
+export type IconComponent = {
   size?: number | string;
-}
+} & SVGProps<SVGSVGElement>;
 
 export interface IBreadcrumbPath {
   title: string;

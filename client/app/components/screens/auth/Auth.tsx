@@ -60,7 +60,7 @@ export const Auth: FC = () => {
                 />
               </div>
               <div className="xl:ml-1 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 pt-8">
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} role="form">
                   <div className="flex justify-center lg:justify-start mb-3">
                     <p className="text-2xl font-bold mb-0 mr-4">Sign in</p>
                   </div>

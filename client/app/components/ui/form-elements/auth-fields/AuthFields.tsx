@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 
-import { IAuthFields } from '@/components/ui/form-elements/auth-fields/AuthFields.props';
-import Field from '@/components/ui/form-elements/Field';
 import { validUsername } from '@/shared/regex';
+
+import { IAuthFields } from './AuthFields.props';
+import Field from '../Field';
 
 export const AuthFields: FC<IAuthFields> = ({ register, formState: { errors }, isPasswordRequired = false }) => {
   return (

@@ -11,11 +11,12 @@ const navigation = [
   { id: 1, name: AppRouteKeys.HOME, href: AppRoutesEnum.HOME, current: true, isAvailable: true },
   { id: 2, name: AppRouteKeys.PRODUCTS, href: AppRoutesEnum.PRODUCTS, current: false, isAvailable: false },
   { id: 3, name: AppRouteKeys.USERS, href: AppRoutesEnum.USERS, current: false, isAvailable: false },
+  { id: 3, name: AppRouteKeys.UIKIT, href: AppRoutesEnum.UIKIT, current: false, isAvailable: false },
 ];
 
 export const NavList: FC<INavListProps> = ({ pathname, isAdmin }) => {
   return (
-    <>
+    <nav className="ml-10 flex items-baseline space-x-4" tabIndex={0} aria-label="main navigation">
       {navigation
         .filter(item => (!isAdmin && !item.isAvailable ? null : item))
         .map(item => {
@@ -28,20 +29,21 @@ export const NavList: FC<INavListProps> = ({ pathname, isAdmin }) => {
                     : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                   'px-3 py-2 rounded-md text-sm font-medium',
                 )}
-                aria-current={item.current ? 'page' : undefined}
+                tabIndex={0}
+                aria-current={'page'}
               >
                 {item.name}
               </a>
             </Link>
           );
         })}
-    </>
+    </nav>
   );
 };
 
 export const NavListMobile: FC<INavListProps> = ({ pathname, isAdmin }) => {
   return (
-    <>
+    <nav className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
       {navigation
         .filter(item => (!isAdmin && !item.isAvailable ? null : item))
         .map(navItem => (
@@ -60,6 +62,6 @@ export const NavListMobile: FC<INavListProps> = ({ pathname, isAdmin }) => {
             {navItem.name}
           </Disclosure.Button>
         ))}
-    </>
+    </nav>
   );
 };

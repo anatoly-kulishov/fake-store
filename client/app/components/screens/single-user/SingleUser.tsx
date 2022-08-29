@@ -33,13 +33,19 @@ export const SingleUser: FC<ISingleUserScreenProps> = ({ user }) => {
                 </span>
               </p>
               <p className="mb-2 text-gray-700">
-                Email: <span className="font-bold">{user.email}</span>
+                Email:{' '}
+                <a href={`mailto: {user.email}`} className="font-bold">
+                  {user.email}
+                </a>
               </p>
               <p className="mb-2 text-gray-700">
                 Password: <span className="font-bold">{user.password}</span>
               </p>
               <p className="mb-2 text-gray-700">
-                Phone: <span className="font-bold">{user.phone}</span>
+                Phone:{' '}
+                <a href={`tel:${user.phone}`} className="font-bold">
+                  {user.phone}
+                </a>
               </p>
               <div className="border-t-2 border-t-gray-300 pt-2">
                 <p className="mb-2 text-gray-700">

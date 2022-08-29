@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 
-import { IField } from '@/components/ui/form-elements/form.interface';
+import { IField } from './form.interface';
 
 const Field = forwardRef<HTMLInputElement, IField>(({ placeholder, error, type = 'text', style, ...rest }, ref) => {
   return (
