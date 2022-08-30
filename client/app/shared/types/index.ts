@@ -43,10 +43,10 @@ export enum ResultCodesEnum {
 export interface IBaseResponse {
   resultCode: ResultCodesEnum;
   messages: string[];
-  data: {};
+  data: object;
 }
 
-export interface IAPIResponseType<D = {}, RC = ResultCodesEnum> {
+export interface IAPIResponseType<D = object, RC = ResultCodesEnum> {
   data: D;
   resultCode: RC;
   messages: string[];

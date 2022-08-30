@@ -8,6 +8,6 @@ export interface IFieldProps {
 
 type TypeInputPropsField = InputHTMLAttributes<HTMLInputElement> & IFieldProps;
 
-export interface IField extends TypeInputPropsField {}
+export type IField = TypeInputPropsField;
 
-export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
+export type IButton = ButtonHTMLAttributes<HTMLButtonElement>;

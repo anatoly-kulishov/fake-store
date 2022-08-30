@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
+import cn from 'classnames';
 
 import { DEFAULT_ICONS_SIZE } from '@/configs/constants';
 import { IconComponent } from '@/shared/types';
 
-const SadSmileIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE, ...props }) => {
+const SadSmileIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE, className, ...props }) => {
   return (
     <svg
       id="Layer_1"
-      className="emoji-404 mx-auto"
+      className={cn('emoji-404', className)}
       width={size}
       height={size}
       enableBackground="new 0 0 226 249.135"
