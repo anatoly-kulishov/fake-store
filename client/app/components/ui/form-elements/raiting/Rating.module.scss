@@ -1,0 +1,34 @@
+.filled svg {
+  fill: theme("colors.indigo.600");
+}
+
+.star {
+  display: inline-block;
+}
+
+.star svg {
+  margin-right: 5px;
+}
+
+.editable {
+  cursor: pointer;
+}
+
+.ratingWrapper {
+  position: relative;
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  color: theme("colors.red.600");
+}
+
+.error svg {
+  stroke: theme("colors.red.600");
+}

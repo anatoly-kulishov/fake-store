@@ -11,7 +11,7 @@ export const API_URL: Undetectable<string> = `${process.env.NEXT_PUBLIC_API}`;
 export const SITE_TITLE = 'Fake Store';
 export const DEFAULT_ICONS_SIZE = '24px';
 export const accentColor = '#5a67d8';
-export const LOGO_URL: string = 'https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg';
+export const LOGO_URL = 'https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg';
 export const IS_SERVER = typeof window === 'undefined';
 export const IS_CLIENT = typeof window !== 'undefined';
 export const USER_PHOTO = LOGO_URL;
@@ -28,11 +28,11 @@ export const REMEMBER_ME_LABEL = 'Remember me';
 /**
  * Validations
  */
-export const MIN_PASS_LENGTH: number = 8;
-export const MIN_SEARCH_LENGTH: number = 3;
-export const FILE_SIZE_LIMIT: number = 10;
-export const FILE_SIZE_LIMIT_ERROR: string = 'Size must be less 10Mb';
-export const ALLOWED_EXTENSIONS_ERROR: string = 'Not allowed format file!';
+export const MIN_PASS_LENGTH = 8;
+export const MIN_SEARCH_LENGTH = 3;
+export const FILE_SIZE_LIMIT = 10;
+export const FILE_SIZE_LIMIT_ERROR = 'Size must be less 10Mb';
+export const ALLOWED_EXTENSIONS_ERROR = 'Not allowed format file!';
 
 /**
  * Placeholders

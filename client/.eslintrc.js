@@ -1,5 +1,16 @@
 module.exports = {
-  extends: ["airbnb-base", "airbnb-typescript", "plugin:react/recommended", "plugin:prettier/recommended", "next", "next/core-web-vitals"],
+  extends: [
+    "airbnb-base",
+    "airbnb-typescript",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "next",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended"
+  ],
   plugins: ["react", "@typescript-eslint", "prettier", "react-hooks"],
   env: {
     jest: true,

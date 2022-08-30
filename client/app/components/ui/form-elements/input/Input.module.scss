@@ -1,21 +1,39 @@
 .input {
-  display: block;
-  width: 100%;
-  max-width: 100%;
+  min-height: 36px;
+  max-height: 150px;
   padding: 7px 15px;
-  margin-bottom: 5px;
-
-  font-size: theme("fontSize.base");
 
   color: theme("colors.black");
-  outline-color: theme("colors.indigo.600");
-  background-color: theme("colors.white");
-
   border: none;
   border-radius: 5px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, .5);
+  outline-color: theme("colors.indigo.600");
+  background: theme("colors.white");
+  box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
 
-  &::placeholder {
-    color: theme("colors.gray.500");
-  }
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.input::placeholder {
+  color: theme("colors.gray.600")
+}
+
+.error {
+  border: 1px solid theme("colors.red.600");
+}
+
+.inputWrapper {
+  display: flex;
+  position: relative;
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  color: theme("colors.red.600");
 }
