@@ -5,6 +5,10 @@
 @tailwind utilities;
 @import 'react-redux-toastr/src/styles/index';
 
+*:focus {
+  outline-color: theme("colors.indigo.600");
+}
+
 .layout {
   display: flex;
   flex-direction: column;

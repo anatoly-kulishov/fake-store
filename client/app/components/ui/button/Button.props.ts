@@ -6,6 +6,6 @@ export interface ButtonProps
     'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'onDrag' | 'ref'
   > {
   children: ReactNode;
-  appearance: 'primary' | 'ghost';
+  appearance: 'primary' | 'ghost' | 'danger' | 'warning';
   arrow?: 'right' | 'down' | 'none';
 }

@@ -15,13 +15,19 @@
   font-size: 14px;
 }
 
+.button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
 .primary {
   color: theme("colors.white");
   background-color: theme("colors.indigo.600");
 }
 
+.primary:focus,
 .primary:hover {
-  background-color: theme("colors.indigo.600");
+  background-color: theme("colors.indigo.700");
 }
 
 .ghost {
@@ -30,9 +36,30 @@
   background: none;
 }
 
+.ghost:focus,
 .ghost:hover {
   color: theme("colors.white");
-  background-color: theme("colors.indigo.600");
+  background-color: theme("colors.indigo.700");
+}
+
+.danger {
+  background-color: theme("colors.yellow.600");
+  color: theme("colors.white");
+}
+
+.danger:focus,
+.danger:hover {
+  background-color: theme("colors.yellow.700");
+}
+
+.warning {
+  background-color: theme("colors.red.600");
+  color: theme("colors.white");
+}
+
+.warning:focus,
+.warning:hover {
+  background-color: theme("colors.red.700");
 }
 
 .arrow {
@@ -42,7 +69,7 @@
 
 .down {
   transition: all 0.2s;
-  transform: rotate(90deg);
+  transform: rotate(90deg) translate(6%, 20%);
 }
 
 .primary svg,

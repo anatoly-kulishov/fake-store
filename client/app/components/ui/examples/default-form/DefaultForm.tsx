@@ -4,8 +4,8 @@ import { Controller, useForm } from 'react-hook-form';
 import Input from '@/components/ui/form-elements/input';
 import Textarea from '@/components/ui/form-elements/textarea';
 import Rating from '@/components/ui/form-elements/raiting';
-import Button from '@/components/ui/button';
 import { UIKitForm } from '@/components/screens/ui-kit/UIKit.props';
+import Button from '@/components/ui/button';
 
 export const DefaultForm: FC = () => {
   const {
@@ -60,16 +60,25 @@ export const DefaultForm: FC = () => {
           error={errors.message}
           placeholder="Message"
           aria-invalid={!!errors.message}
-          className="mr-4"
+          className="mr-6"
         />
-        <Controller
-          control={control}
-          name="rating"
-          rules={{ required: { value: true, message: 'Specify the rating' } }}
-          render={({ field }) => (
-            <Rating isEditable rating={field.value} ref={field.ref} setRating={field.onChange} error={errors.rating} />
-          )}
-        />
+        <div>
+          <span className="block text-sm font-medium mb-2">Rating:</span>
+          <Controller
+            control={control}
+            name="rating"
+            rules={{ required: { value: true, message: 'Specify the rating' } }}
+            render={({ field }) => (
+              <Rating
+                isEditable
+                rating={field.value}
+                ref={field.ref}
+                setRating={field.onChange}
+                error={errors.rating}
+              />
+            )}
+          />
+        </div>
       </div>
       <div className="mb-6">
         <Button appearance="primary">Submit</Button>

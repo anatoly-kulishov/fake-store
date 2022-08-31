@@ -10,6 +10,7 @@ import AuthProvider from '@/providers/AuthProvider/AuthProvider';
 import { isAuthRoute } from '@/utils/route/isAuthRoute';
 import { IChildren } from '@/shared/types';
 import Layout from '@/components/layout';
+import Up from '@/components/ui/up';
 import { store } from 'store/store';
 
 const queryClient = new QueryClient({
@@ -31,6 +32,7 @@ const MainProvider: FC<TypeComponentAuthFields & IChildren> = ({ children, Compo
           <AuthProvider Component={Component}>
             {isAuthRoute(route) ? <div className="bg-gray-100">{children}</div> : <Layout>{children}</Layout>}
           </AuthProvider>
+          <Up />
         </QueryClientProvider>
       </Provider>
     </HeadProvider>
