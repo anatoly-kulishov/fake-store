@@ -876,6 +876,10 @@ module.exports = {
           outlineColor: "#e53e3e"
         }
       });
-    })
+    }),
+    function({ addVariant }) {
+      addVariant("child", "& > *");
+      addVariant("child-hover", "& > *:hover");
+    }
   ]
 };

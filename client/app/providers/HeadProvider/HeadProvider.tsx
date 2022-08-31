@@ -7,6 +7,12 @@ import { IChildren } from '@/shared/types';
 
 import Favicons from './Favicons';
 
+// Router.events.on('routeChangeComplete', (url: string) => {
+//   if (typeof window !== 'undefined') {
+//     ym('hit', url);
+//   }
+// });
+
 const HeadProvider: FC<IChildren & { route: string }> = ({ children, route }) => {
   return (
     <>
@@ -19,8 +25,12 @@ const HeadProvider: FC<IChildren & { route: string }> = ({ children, route }) =>
         <meta name="msapplication-navbutton-color" content={accentColor} />
         <meta name="apple-mobile-web-app-status-bar-style" content={accentColor} />
         <meta property="og:url" content={`${process.env.NEXT_PUBLIC_DOMAIN}${route}`} />
+        <link rel="preconnect" href="https://mc.yandex.ru" />
       </Head>
-      {children}
+      <>
+        {/* <YMInitializer accounts={[90161321]} options={{ webvisor: true, defer: true }} version="2" /> */}
+        {children}
+      </>
     </>
   );
 };

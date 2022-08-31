@@ -6,8 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .ts --ext .tsx .",
-    "lint:fix": "npm run lint -- --fix",
-    "prepare": "cd .. && husky install front/.husky",
+    "lint:fix": "npm run lint --fix",
+    "prepare": "cd .. && husky install .husky",
     "type-check": "tsc"
   },
   "dependencies": {

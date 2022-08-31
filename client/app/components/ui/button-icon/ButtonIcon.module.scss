@@ -1,0 +1,42 @@
+.button {
+  width: 40px;
+  height: 40px;
+
+  cursor: pointer;
+
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px rgb(0 0 0 / 5%);
+}
+
+.primary {
+  background-color: theme("colors.indigo.600");
+}
+
+.button svg {
+  margin: 0 auto;
+}
+
+.primary svg * {
+  fill: theme("colors.white");
+}
+
+.primary:hover {
+  background-color: theme("colors.indigo.700");
+}
+
+.white {
+  background-color: theme("colors.white");
+}
+
+.white svg * {
+  fill: theme("colors.indigo.600");
+}
+
+.white:hover {
+  background-color: theme("colors.indigo.600");
+}
+
+.white:hover svg * {
+  fill: theme("colors.white");
+}
