@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { ButtonHTMLAttributes, SVGProps } from 'react';
 
 export type Nullable<T> = T | null;
 export type Undetectable<T> = T | undefined;
@@ -34,6 +34,8 @@ export const mappedErrorResponseStatusIndex: Record<ErrorResponseStatusEnum, str
   [ErrorResponseStatusEnum.NOT_FOUND]: "Sorry, We couldn't find what you are looking for!",
   [ErrorResponseStatusEnum.INTERNAL_SERVER_ERROR]: 'Server-side error occurred',
 };
+
+export type IButton = ButtonHTMLAttributes<HTMLButtonElement>;
 
 export enum ResultCodesEnum {
   Success = 0,

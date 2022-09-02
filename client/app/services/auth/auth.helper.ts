@@ -9,7 +9,7 @@ export const saveTokensStorage = (data: IAuthUser) => {
 
 export const saveToStorage = (data: IAuthUser) => {
   saveTokensStorage(data);
-  localStorage.setItem('user', JSON.stringify(data));
+  localStorage.setItem('owner', JSON.stringify(data));
 };
 
 export const removeTokensStorage = () => {

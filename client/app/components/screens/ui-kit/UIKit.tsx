@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 
+import DefaultButtons from '@/components/templates/default-buttons';
+import DefaultForm from '@/components/templates/default-form';
 import Meta from '@/components/shared/meta';
-import Search from '@/components/ui/form-elements/search';
-import DefaultForm from '@/components/ui/examples/default-form';
-
-import { DefaultButtons } from '../../ui/examples/default-buttons/DefaultButtons';
+import Search from '@/components/ui/search';
 
 export const UIKit: FC = () => {
   return (

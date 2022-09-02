@@ -31,7 +31,6 @@ export const MainHero: FC = () => {
           objectFit="contain"
           layout="responsive"
           objectPosition="top"
-          priority={true}
           alt="banner"
         />
       </div>

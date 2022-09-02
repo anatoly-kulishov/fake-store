@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 
 import { validUsername } from '@/shared/regex';
+import Input from '@/components/ui/form-elements/input';
 
 import { IAuthFields } from './AuthFields.props';
-import Field from '../Field';
 
 export const AuthFields: FC<IAuthFields> = ({ register, formState: { errors }, isPasswordRequired = false }) => {
   return (
     <>
       <div className="mb-5">
-        <Field
+        <Input
           {...register('username', {
             required: 'Username is required!',
             pattern: {
@@ -22,7 +22,7 @@ export const AuthFields: FC<IAuthFields> = ({ register, formState: { errors }, i
         />
       </div>
       <div className="mb-6">
-        <Field
+        <Input
           {...register(
             'password',
             isPasswordRequired

@@ -1,8 +1,8 @@
 import React from 'react';
 import { GetStaticPaths } from 'next';
 
-import { UserService } from '@/services/user/user.service';
 import SingleUser from '@/components/screens/single-user';
+import { UserService } from '@/services/user/user.service';
 import { NextPageAuth } from '@/shared/types/auth.types';
 import { IUser } from '@/shared/types/user.types';
 
@@ -25,7 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 /**
- * Получает данные для статической генерации.
+ * Получает данные для статической генерации
  * Когда использовать?
  * Данные для рендера доступны во время сборки
  * Данные могут быть публично закэшированы

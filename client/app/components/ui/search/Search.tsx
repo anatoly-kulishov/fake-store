@@ -11,7 +11,7 @@ import { KeyCodeEnum } from '@/shared/types';
 import { SearchProps } from './Search.props';
 import styles from './Search.module.scss';
 
-const Search: FC<SearchProps> = ({ className, ...props }) => {
+const Search: FC<SearchProps> = ({ className, ...rest }) => {
   const [search, setSearch] = useState<string>('');
   const router = useRouter();
 
@@ -25,7 +25,7 @@ const Search: FC<SearchProps> = ({ className, ...props }) => {
 
   return (
     <div className="inline-flex">
-      <div className={cn(className, styles.search)} {...props}>
+      <div className={cn(className, styles.search)} {...rest}>
         <Input
           className={styles.input}
           placeholder="Search here..."

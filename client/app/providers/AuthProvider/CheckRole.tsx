@@ -7,21 +7,21 @@ import { AppRoutesEnum } from '@/shared/types/routes.types';
 import { IChildren } from '@/shared/types';
 
 const CheckRole: FC<TypeComponentAuthFields & IChildren> = ({ children, Component: { isOnlyAdmin, isOnlyUser } }) => {
-  const { user } = useAuth();
+  const { owner } = useAuth();
   const router = useRouter();
 
   const Children = () => <>{children}</>;
 
   if (!isOnlyAdmin && !isOnlyUser) return <Children />;
 
-  if (user?.isAdmin) return <Children />;
+  if (owner?.isAdmin) return <Children />;
 
   if (isOnlyAdmin) {
     router.pathname !== '/404' && router.replace('/404');
     return null;
   }
 
-  const isUser = user && !user.isAdmin;
+  const isUser = owner && !owner.isAdmin;
 
   if (isUser && isOnlyUser) return <Children />;
 

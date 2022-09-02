@@ -42,23 +42,23 @@
   background-color: theme("colors.indigo.700");
 }
 
-.danger {
-  background-color: theme("colors.yellow.600");
-  color: theme("colors.white");
-}
-
-.danger:focus,
-.danger:hover {
-  background-color: theme("colors.yellow.700");
-}
-
 .warning {
-  background-color: theme("colors.red.600");
+  background-color: theme("colors.yellow.600");
   color: theme("colors.white");
 }
 
 .warning:focus,
 .warning:hover {
+  background-color: theme("colors.yellow.700");
+}
+
+.danger {
+  background-color: theme("colors.red.600");
+  color: theme("colors.white");
+}
+
+.danger:focus,
+.danger:hover {
   background-color: theme("colors.red.700");
 }
 

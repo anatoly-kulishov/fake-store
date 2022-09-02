@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { DEFAULT_ICONS_SIZE } from '@/configs/constants';
 import { IconComponent } from '@/shared/types';
 
-const SadSmileIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE, className, ...props }) => {
+const SadSmileIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE, className, ...rest }) => {
   return (
     <svg
       id="Layer_1"
@@ -16,7 +16,7 @@ const SadSmileIcon: FC<IconComponent> = ({ size = DEFAULT_ICONS_SIZE, className,
       version="1.1"
       viewBox="0 0 226 249.135"
       xmlSpace="preserve"
-      {...props}
+      {...rest}
     >
       <circle cx="113" cy="113" fill="#FFE585" r="109" />
       <line
