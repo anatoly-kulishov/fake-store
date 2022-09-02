@@ -1,22 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { checkAuthAC, clearRandomUserAC, getRandomUserAC, loginAC, logoutAC } from '@/store/auth/auth.actions';
+import { IAuthInitialState } from '@/store/auth/auth.interface';
 import { getStoreLocal } from '@/utils/storage/local';
 
-import { checkAuthAC, clearRandomUserAC, getRandomUserAC, loginAC, logoutAC } from './user.actions';
-import { IUserInitialState } from './user.interface';
-
-const initialState: IUserInitialState = {
-  user: {
-    username: getStoreLocal('user')?.username,
-    token: getStoreLocal('user')?.token,
+const initialState: IAuthInitialState = {
+  owner: {
+    username: getStoreLocal('owner')?.username,
+    token: getStoreLocal('owner')?.token,
     isAdmin: true,
   },
   randomUser: null,
   isLoading: false,
 };
 
-export const userSlice = createSlice({
-  name: 'user',
+export const authSlice = createSlice({
+  name: 'auth',
   initialState,
   reducers: {},
   extraReducers: builder => {
@@ -25,7 +24,7 @@ export const userSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(loginAC.fulfilled, (state, { payload }) => {
-        state.user = {
+        state.owner = {
           username: payload.username,
           token: payload.token,
           isAdmin: true,
@@ -34,10 +33,10 @@ export const userSlice = createSlice({
       })
       .addCase(loginAC.rejected, state => {
         state.isLoading = false;
-        state.user = null;
+        state.owner = null;
       })
       .addCase(logoutAC.fulfilled, state => {
-        state.user = null;
+        state.owner = null;
       })
       .addCase(getRandomUserAC.pending, state => {
         state.isLoading = true;
@@ -50,8 +49,8 @@ export const userSlice = createSlice({
         state.randomUser = null;
       })
       .addCase(checkAuthAC.fulfilled, (state, { payload }) => {
-        state.user = {
-          username: getStoreLocal('user')?.username,
+        state.owner = {
+          username: getStoreLocal('owner')?.username,
           token: payload.token,
           isAdmin: true,
         };
@@ -59,4 +58,4 @@ export const userSlice = createSlice({
   },
 });
 
-export const { reducer } = userSlice;
+export const { reducer } = authSlice;

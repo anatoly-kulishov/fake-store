@@ -3,7 +3,6 @@ import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import Logo from '@/components/layout/navigation/logo';
@@ -11,14 +10,14 @@ import { NavList, NavListMobile } from '@/components/layout/navigation/nav-list/
 import { AppRoutesEnum } from '@/shared/types/routes.types';
 import { useActions } from '@/hooks/useActions';
 import { useAuth } from '@/hooks/useAuth';
-import avatar from '@/assets/images/avatar.jpg';
+import AvatarIcon from '@/components/shared/icons/AvatarIcon';
 
 const userNavigation = [{ name: 'Sign out', href: AppRoutesEnum.AUTH }];
 
 export const Navigation: FC = () => {
   const { pathname } = useRouter();
   const { logoutAC } = useActions();
-  const { user } = useAuth();
+  const { owner } = useAuth();
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -29,20 +28,20 @@ export const Navigation: FC = () => {
               <div className="flex items-center">
                 <Logo />
                 <div className="hidden md:block">
-                  <NavList pathname={pathname} isAdmin={user?.isAdmin} />
+                  <NavList pathname={pathname} isAdmin={owner?.isAdmin} />
                 </div>
               </div>
-              {user ? (
+              {owner ? (
                 <div className="hidden md:block z-10">
                   <div className="ml-4 flex items-center md:ml-6">
-                    <Menu as="div" className="ml-3 relative">
+                    <Menu as="div" className="relative ml-3 mr-1">
                       <div>
                         <Menu.Button
                           className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                           tabIndex={0}
                         >
                           <span className="sr-only">Open user menu</span>
-                          <Image className="h-10 w-10 rounded-full" src={avatar} alt="" width={35} height={35} />
+                          <AvatarIcon className="rounded-full" size={30} aria-label="avatar" />
                         </Menu.Button>
                       </div>
                       <Transition
@@ -57,7 +56,7 @@ export const Navigation: FC = () => {
                         <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
                           <Menu.Item>
                             <div className="py-2 px-4 border-b-2 border-gray-400 border-opacity-25">
-                              <span className="block text-sm text-indigo-600 font-bold">{user?.username}</span>
+                              <span className="block text-sm text-indigo-600 font-bold">{owner?.username}</span>
                             </div>
                           </Menu.Item>
                           {userNavigation.map(item => (
@@ -99,14 +98,14 @@ export const Navigation: FC = () => {
             </div>
           </div>
           <Disclosure.Panel className="md:hidden">
-            <NavListMobile pathname={pathname} isAdmin={user?.isAdmin} />
-            <div className="pt-4 pb-3 border-t border-gray-700">
+            <NavListMobile pathname={pathname} isAdmin={owner?.isAdmin} />
+            <div className="pt-3 pb-3 border-t border-gray-700">
               <div className="flex items-center px-5">
                 <div className="flex items-center flex-shrink-0">
-                  <Image src={avatar} className="h-10 w-10 rounded-full" width={32} height={32} alt="" />
+                  <AvatarIcon className="rounded-full" size={30} aria-label="avatar" />
                 </div>
                 <div className="ml-3">
-                  <div className="text-base font-medium leading-none text-white">{user?.username}</div>
+                  <div className="text-base font-medium leading-none text-white">{owner?.username}</div>
                 </div>
               </div>
               <div className="mt-3 px-2 space-y-1">

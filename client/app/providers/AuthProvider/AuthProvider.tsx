@@ -5,9 +5,9 @@ import Cookies from 'js-cookie';
 
 import { TypeComponentAuthFields } from '@/shared/types/auth.types';
 import { useActions } from '@/hooks/useActions';
-import { useAuth } from '@/hooks/useAuth';
 import { IChildren } from '@/shared/types';
-import { checkAuthAC } from '@/store/user/user.actions';
+import { checkAuthAC } from '@/store/auth/auth.actions';
+import { useAuth } from '@/hooks/useAuth';
 
 const DynamicCheckRole = dynamic(() => import('./CheckRole'), { ssr: false });
 
@@ -15,7 +15,7 @@ const AuthProvider: FC<TypeComponentAuthFields & IChildren> = ({
   children,
   Component: { isOnlyAdmin, isOnlyUser },
 }) => {
-  const { user } = useAuth();
+  const { owner } = useAuth();
   const { logoutAC } = useActions();
   const { pathname } = useRouter();
 
@@ -27,8 +27,8 @@ const AuthProvider: FC<TypeComponentAuthFields & IChildren> = ({
 
   useEffect(() => {
     const refreshToken = Cookies.get('refreshToken');
-    if (!refreshToken && user) logoutAC();
-  }, [logoutAC, pathname, user]);
+    if (!refreshToken && owner) logoutAC();
+  }, [logoutAC, pathname, owner]);
 
   return !isOnlyAdmin && !isOnlyUser ? (
     <>{children}</>

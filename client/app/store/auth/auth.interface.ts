@@ -1,7 +1,7 @@
 import { IAuthInput } from '@/components/screens/auth/auth.interface';
 import { Nullable } from '@/shared/types';
 
-export interface IUserState {
+export interface IAuthState {
   username: string;
   token: string;
   isAdmin?: boolean;
@@ -16,8 +16,8 @@ export interface IToken {
   token: string;
 }
 
-export interface IUserInitialState {
-  user: Nullable<IUserState>;
+export interface IAuthInitialState {
+  owner: Nullable<IAuthState>;
   randomUser: Nullable<IAuthInput>;
   isLoading: boolean;
 }

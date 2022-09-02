@@ -28,7 +28,7 @@ export const ProductRow: FC<IProductRowProps> = ({ data }) => {
       </td>
       <td className="py-4 px-6 font-semibold text-gray-900">{data.title}</td>
       <td className="py-4 px-6 font-semibold">
-        <Link href={`#${data.category}`} scroll={false}>
+        <Link href={`/products/${data.category}`}>
           <a
             className="inline-block text-blue-700 transition-opacity hover:opacity-75 focus:opacity-75"
             aria-label={`Category is ${data.category}`}
@@ -42,12 +42,12 @@ export const ProductRow: FC<IProductRowProps> = ({ data }) => {
       <td className="py-4 px-6">
         <div className="flex m-auto h-full">
           <Link href={`${AppRoutesEnum.PRODUCTS}/[id]`} as={`${AppRoutesEnum.PRODUCTS}/${data.id}`}>
-            <a className="font-medium text-blue-600 transition-colors hover:text-blue-800 focus:text-blue-800 mr-2 cursor-pointer">
+            <a className="font-medium text-indigo-700 transition-colors hover:text-blue-800 focus:text-blue-800 mr-2 cursor-pointer">
               View
             </a>
           </Link>
           <button
-            className="font-medium text-red-600 transition-all hover:text-red-800 focus:text-red-800"
+            className="font-medium text-red-700 transition-all hover:text-red-800 focus:text-red-800"
             onClick={deleteProductHandler}
             disabled={!data?.id}
           >

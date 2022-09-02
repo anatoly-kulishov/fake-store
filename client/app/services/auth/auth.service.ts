@@ -3,9 +3,9 @@ import Cookies from 'js-cookie';
 
 import { getContentType } from '@/api/api.helpers';
 import { getAuthUrl } from '@/configs/api.config';
-import { IToken } from '@/store/user/user.interface';
 import { API_URL } from '@/configs/constants';
 import { axiosClassic } from '@/api/interceptors';
+import { IToken } from '@/store/auth/auth.interface';
 
 import { removeTokensStorage, saveToStorage } from './auth.helper';
 

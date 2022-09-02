@@ -28,25 +28,25 @@ export const UserRow: FC<IUserRowProps> = ({ data }) => {
       <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
         <span>{data.username}</span>
       </th>
-      <td className="py-4 px-6">
+      <td className="py-4 px-6 text-gray-700">
         {data.name.firstname} {data.name.lastname}
       </td>
-      <td className="py-4 px-6">{data.email}</td>
-      <td className="py-4 px-6">{data.password}</td>
-      <td className="py-4 px-6">{data.phone}</td>
-      <td className="py-4 px-6">
+      <td className="py-4 px-6 text-gray-700">{data.email}</td>
+      <td className="py-4 px-6 text-gray-700">{data.password}</td>
+      <td className="py-4 px-6 text-gray-700">{data.phone}</td>
+      <td className="py-4 px-6 text-gray-700">
         {data.address.geolocation.lat}
         {data.address.geolocation.long}
       </td>
       <td className="py-4 px-6">
         <div className="flex m-auto h-full">
-          <Link href={`${AppRoutesEnum.USERS}/[id]`} as={`${AppRoutesEnum.USERS}/${data.id}`} passHref>
-            <a className="font-medium text-blue-600 transition-colors hover:text-blue-800 focus:text-blue-800 mr-2 cursor-pointer">
+          <Link href={`${AppRoutesEnum.USERS}/${data.id}`}>
+            <a className="font-medium text-indigo-700 transition-colors hover:text-blue-800 focus:text-blue-800 mr-2 cursor-pointer">
               View
             </a>
           </Link>
           <button
-            className="font-medium text-red-600 transition-all hover:text-red-800 focus:text-red-800"
+            className="font-medium text-red-700 transition-all hover:text-red-800 focus:text-red-800"
             onClick={deleteUserHandler}
             disabled={!data?.id}
           >

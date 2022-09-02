@@ -1,8 +1,10 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from 'react';
+import { DetailedHTMLProps, ReactNode } from 'react';
+
+import { IButton } from '@/shared/types';
 
 export interface ButtonProps
   extends Omit<
-    DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+    DetailedHTMLProps<IButton, HTMLButtonElement>,
     'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'onDrag' | 'ref'
   > {
   children: ReactNode;

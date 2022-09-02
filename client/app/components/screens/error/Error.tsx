@@ -23,7 +23,7 @@ export const Error: FC<IErrorScreenProps> = ({ code, text }) => {
         <div className="pb-10">
           <div className="justify-center">
             <div className="m-auto text-center">
-              <SadSmileIcon size="250px" />
+              <SadSmileIcon size="250px" className="mx-auto" />
               <div className="tracking-widest mt-5">
                 <span className="text-gray-500 text-6xl block">
                   {!isCatchesError && <Heading tag="h2" text={addSeparator(stringCode)} />}
