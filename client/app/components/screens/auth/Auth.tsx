@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { useAuthRedirect } from '@/components/screens/auth/useAuthRedirect';
 import { IAuthInput } from '@/components/screens/auth/auth.interface';
@@ -9,8 +10,13 @@ import { useActions } from '@/hooks/useActions';
 import Meta from '@/components/shared/meta';
 import Button from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
+import CloseIcon from '@/components/shared/icons/CloseIcon';
+import { accentColor } from '@/configs/constants';
+
+import styles from './Auth.module.scss';
 
 export const Auth: FC = () => {
+  const { back } = useRouter();
   useAuthRedirect();
 
   const { isLoading, randomUser } = useAuth();
@@ -43,10 +49,15 @@ export const Auth: FC = () => {
     }
   }, [randomUser, setValue]);
 
+  const goBack = () => back();
+
   return (
     <Meta title="Authentication">
       <section className="bg-gray-100">
         <div className="h-screen container mx-auto max-w-4xl">
+          <span className={styles.iconClose} onClick={goBack}>
+            <CloseIcon size={20} fill={accentColor} />
+          </span>
           <div className="px-6 h-full text-gray-800">
             <div className="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
               <div className="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">

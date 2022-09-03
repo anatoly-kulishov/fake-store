@@ -5,11 +5,11 @@ import { Disclosure } from '@headlessui/react';
 
 import { INavListMenu, INavListProps } from '@/components/layout/navigation/nav-list/NavList.props';
 import { isCurrentRoute } from '@/utils/route/isCurrentRoute';
-import { useActions } from '@/hooks/useActions';
 import { useTypedSelector } from '@/hooks/useTypedSelector';
 import { getProductsState } from '@/store/products/products.selectors';
-import DropDownMenu from '@/components/ui/drop-down-menu';
 import { AppRouteKeys, AppRoutesEnum } from '@/shared/types/routes.types';
+import DropDownMenu from '@/components/layout/navigation/drop-down-menu';
+import { useActions } from '@/hooks/useActions';
 
 export const navListMenu: INavListMenu = [
   { id: 1, name: AppRouteKeys.HOME, href: AppRoutesEnum.HOME, current: true, isAvailable: true },
@@ -43,7 +43,6 @@ export const NavList: FC<INavListProps> = ({ pathname, isAdmin }) => {
 
   useEffect(() => {
     getAllProductsCategoriesAC();
-    // eslint-disable-next-line
   }, []);
 
   return (
@@ -54,6 +53,7 @@ export const NavList: FC<INavListProps> = ({ pathname, isAdmin }) => {
           if (item?.submenuId) {
             return (
               <DropDownMenu
+                key={item.id}
                 menuAs="div"
                 navItem={item}
                 subMenu={productsCategories}

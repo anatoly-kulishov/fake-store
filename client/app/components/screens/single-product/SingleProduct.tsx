@@ -19,8 +19,8 @@ export const SingleProduct: FC<IProductScreenProps> = ({ product }) => {
             startPath={{ title: AppRouteKeys.HOME, href: AppRoutesEnum.HOME }}
             paths={[
               {
-                title: AppRouteKeys.PRODUCTS,
-                href: AppRoutesEnum.PRODUCTS,
+                title: capitalizeFirstLetter(product.category),
+                href: `${AppRoutesEnum.PRODUCTS_CATEGORY}/${product.category}`,
               },
             ]}
             endPath={`${product.title}`}

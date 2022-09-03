@@ -1,0 +1,17 @@
+.arrow {
+  display: inline-block;
+  margin-left: 10px;
+  margin-top: 2px;
+  transition: all .2s;
+}
+
+.down {
+  transform: rotate(90deg) translate(0%, 0%);
+}
+
+.loadingBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+}
