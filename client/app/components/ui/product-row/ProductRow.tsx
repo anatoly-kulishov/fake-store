@@ -27,16 +27,7 @@ export const ProductRow: FC<IProductRowProps> = ({ data }) => {
         />
       </td>
       <td className="py-4 px-6 font-semibold text-gray-900">{data.title}</td>
-      <td className="py-4 px-6 font-semibold">
-        <Link href={`/products/${data.category}`}>
-          <a
-            className="inline-block text-blue-700 transition-opacity hover:opacity-75 focus:opacity-75"
-            aria-label={`Category is ${data.category}`}
-          >
-            {capitalizeFirstLetter(data.category)}
-          </a>
-        </Link>
-      </td>
+      <td className="py-4 px-6 font-semibold text-gray-900">{capitalizeFirstLetter(data.category)}</td>
       <td className="py-4 px-6 font-semibold text-gray-900 text-xs">{capitalizeFirstLetter(data.description)}</td>
       <td className="py-4 px-6 font-semibold text-gray-900">{setCurrency(data.price)}</td>
       <td className="py-4 px-6">

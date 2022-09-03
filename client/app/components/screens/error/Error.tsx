@@ -20,10 +20,10 @@ export const Error: FC<IErrorScreenProps> = ({ code, text }) => {
   return (
     <Meta title={stringCode}>
       <div className="flex flex-1 justify-center items-center w-full text-center">
-        <div className="pb-10">
+        <div className="py-12 px-6 md:pt-0">
           <div className="justify-center">
             <div className="m-auto text-center">
-              <SadSmileIcon size="250px" className="mx-auto" />
+              <SadSmileIcon size="200px" className="mx-auto" />
               <div className="tracking-widest mt-5">
                 <span className="text-gray-500 text-6xl block">
                   {!isCatchesError && <Heading tag="h2" text={addSeparator(stringCode)} />}
